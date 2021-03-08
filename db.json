@@ -1,0 +1,43 @@
+{
+  "Home": [],
+  "teamData": [
+    {
+      "teamName": "CSK",
+      "manager": "Dhoni",
+      "email": "csk",
+      "password": "csk",
+      "purseRemaining": 12000,
+      "playersTaken": 4,
+      "id": 1
+    },
+    {
+      "teamName": "MI",
+      "manager": "Ambani",
+      "email": "mi",
+      "password": "mi",
+      "purseRemaining": 15000,
+      "playersTaken": 2,
+      "id": 2
+    }
+  ],
+  "players": [
+    {
+      "Name": "Dhoni",
+      "email": "dhoni@csk.com",
+      "baseBidAmount": 120,
+      "id": 1
+    },
+    {
+      "Name": "Rohit",
+      "email": "rohit@mi.com",
+      "baseBidAmount": 140,
+      "id": 2
+    },
+    {
+      "Name": "a",
+      "email": "a",
+      "baseBidAmount": 100,
+      "id": 3
+    }
+  ]
+}

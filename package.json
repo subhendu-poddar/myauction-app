@@ -1,0 +1,54 @@
+{
+  "homepage": "https://subhendu-poddar.github.io/auction-app/",
+  "name": "auction",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.6.3",
+    "axios": "^0.21.1",
+    "babel-plugin-polyfill-corejs2": "^0.1.10",
+    "babel-plugin-polyfill-corejs3": "^0.1.7",
+    "babel-plugin-polyfill-regenerator": "^0.1.6",
+    "morgan": "^1.10.0",
+    "queue-microtask": "^1.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.2",
+    "web-vitals": "^1.1.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build && npm run server",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "cd server && npm run start",
+    "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run start\" "
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
+  "proxy": "http://localhost:8080"
+}

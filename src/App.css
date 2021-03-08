@@ -1,0 +1,10 @@
+.App {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    display: grid;
+    flex-direction: column;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+}
