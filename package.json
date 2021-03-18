@@ -1,28 +1,11 @@
 {
-<<<<<<< HEAD
-  "name": "auction-app-main",
-=======
   "homepage": "https://subhendu-poddar.github.io/auction-app/",
   "name": "auction",
->>>>>>> 60a5c9f3e1e29e453fed714d64746de6eb864a2a
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-<<<<<<< HEAD
-    "@testing-library/user-event": "^12.8.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-=======
     "@testing-library/user-event": "^12.6.3",
     "axios": "^0.21.1",
     "babel-plugin-polyfill-corejs2": "^0.1.10",
@@ -45,7 +28,6 @@
     "eject": "react-scripts eject",
     "server": "cd server && npm run start",
     "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run start\" "
->>>>>>> 60a5c9f3e1e29e453fed714d64746de6eb864a2a
   },
   "eslintConfig": {
     "extends": [
@@ -64,13 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-  }
-=======
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
   },
   "proxy": "http://localhost:8080"
->>>>>>> 60a5c9f3e1e29e453fed714d64746de6eb864a2a
 }

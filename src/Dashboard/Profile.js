@@ -7,7 +7,7 @@ class Profile extends Component {
         var user = localStorage.getItem('team')
         var email = user[0].email
         
-        axios.get(`/myteam-data/:${email}`, email)
+        axios.get(`http://localhost:8080/myteam-data/:${email}`, email)
             .then((response) => {
                 console.log(response.email)
                 alert(response)
