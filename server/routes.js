@@ -37,7 +37,7 @@ router.post('/team-signup', (req, res) => {
         }
     })
 })
-router.post('/signin', (req, res) => {
+router.post('/team-signin', (req, res) => {
     teamTemplate.find({
         email: req.body.email,
         password: req.body.password
@@ -51,7 +51,7 @@ router.post('/signin', (req, res) => {
         else if (previousUser.length != 1) {
             return res.send({
                 success: false,
-                message: 'No Team found with this Email Id !!'
+                message: 'Invalid Email or Password !!'
             })
         }
         else {
@@ -118,6 +118,45 @@ router.get('/players', (req, res) => {
             console.log(`error found: ${error}`)
         })
 })
+
+router.get('/myteam-data?email', (req, res) => {
+    teamTemplate.find({
+        email: req.body.email
+    }, (error, result) => {
+        if(error) {
+            return res.send({
+                success: false,
+                message: 'Server error !!'
+            })
+        }
+        else if(result.length != 1) {
+            return res.send({
+                success: false,
+                message: 'No team found !!'
+            })
+        }
+        else {
+            console.log(result)
+            return res.send({
+                success: true,
+                message: 'Data found in the server !!',
+                data: json(result)
+            })
+        }
+    })
+
+
+
+    // .then((data) => {
+    //     //console.log('data: ', data)
+    //     res.json(data)
+    // })
+    // .catch((error) => {
+    //     console.log(`error found: ${error}`)
+    // })
+})
+
+
 
 
 
