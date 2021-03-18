@@ -22,15 +22,16 @@ class Login extends Component {
         evt.preventDefault()
         const user = this.state
 
-        axios.post('/signin', user)
+        axios.post('/team-signin', user)
             .then((response) => {
                 console.log(response)
                 if (!response.data.success) {
-                    alert('No Team found with this Email Id !!')
+                    alert('Invalid Email or Password !!')
                     this.resetState()
                 }
                 else {
                     localStorage.setItem('team', response.config.data)
+                    console.log(response.config.data)
                     console.log("signin successful !!")
                     this.resetState()
                     window.location.href = '/Home'

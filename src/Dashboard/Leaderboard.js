@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 class Leaderboard extends Component {
@@ -9,28 +10,24 @@ class Leaderboard extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount = () => {
         
-        let url = 'http://localhost:8000/teamData'
-        fetch(url)
-            .then((result)=>result.json())
-            .then((response)=>{
-                let fetchDetails = response.map((data,index)=>{
-                    //console.log(data)
-                    return(
-                        <div key={index}>
-                            <br/>
-                            Team Name - {data.teamName} <br/>
-                            Manager Name - {data.manager} <br/>
-                            {/*Email Id - {data.email} <br/>*/}
-                            Purchase Amount Remaining - {data.purseRemaining} <br/>
-                            Players Taken - {data.playersTaken} <br/>
-                        </div>
-                    )
-                })
-                this.setState({details : fetchDetails})
+        axios.get('/teams', this.state.details)
+        .then((response) => {
+            alert(response.email)
+            response.map((data, index) => {
+                <div key={index}>
+                    <br />
+                    Team Name - {data.teamName} <br />
+                    Players Taken - {data.playersTaken} <br />
+                    Purchase Amount Remaining - {data.purseRemaining} <br />
+                </div>
             })
-        
+        })
+        .catch((error) => {
+            console.log('Internal Server Error !!')
+        })
+
     }
 
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import Home from './Home'
 
 class NavMenu extends Component {
 
@@ -18,6 +18,7 @@ class NavMenu extends Component {
             <div>
                 {/*<Link to="Home"> Home</Link>*/}
                 <Link to="/logout" onClick={this.logout}>Log Out</Link>
+               
             </div>
                 :
                 <div>

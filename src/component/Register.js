@@ -23,6 +23,10 @@ class Register extends Component {
             window.alert(" Password and Confirm Password are not same !!")
             return
         }
+        if(this.state.email.length===0) {
+            window.alert('Enter Valid Details !!')
+            return
+        }
         evt.preventDefault()
         const registered = this.state
         delete registered.c_password

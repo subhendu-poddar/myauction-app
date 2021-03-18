@@ -55,7 +55,7 @@ function App() {
           </Route>
 
           <Route path='/'>
-            <Login />
+            <Home />
           </Route>
           
         </Switch>
