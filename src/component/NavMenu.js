@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from './Home'
+import { Link } from "react-router-dom";
 
 class NavMenu extends Component {
 
@@ -15,11 +14,10 @@ class NavMenu extends Component {
         var loggedin = JSON.parse(localStorage.getItem('team'))
         return (
             loggedin?
-            <div>
-                {/*<Link to="Home"> Home</Link>*/}
-                <Link to="/logout" onClick={this.logout}>Log Out</Link>
-               
-            </div>
+                <div>
+                    {/*<Link to="Home"> Home</Link>*/}
+                    <Link to="/logout" onClick={this.logout}>Log Out</Link>
+                </div>
                 :
                 <div>
                     {/*<Link to="Home"> Home</Link>*/}

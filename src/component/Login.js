@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Redirect, useHistory } from "react-router-dom";
-import Home from './Home';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//import { Redirect, useHistory } from "react-router-dom";
+//import Home from './Home';
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from 'axios'
 
 import Protected from "./Protected";
@@ -52,7 +52,9 @@ class Login extends Component {
 
 
     render() {
+        
         return (
+           
             <div>
                 Login Page
                 <br />

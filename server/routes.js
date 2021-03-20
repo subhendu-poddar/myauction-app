@@ -119,31 +119,14 @@ router.get('/players', (req, res) => {
         })
 })
 
-router.get('/myteam-data?email', (req, res) => {
-    teamTemplate.find({
-        email: req.body.email
-    }, (error, result) => {
-        if(error) {
-            return res.send({
-                success: false,
-                message: 'Server error !!'
-            })
-        }
-        else if(result.length != 1) {
-            return res.send({
-                success: false,
-                message: 'No team found !!'
-            })
-        }
-        else {
-            console.log(result)
-            return res.send({
-                success: true,
-                message: 'Data found in the server !!',
-                data: json(result)
-            })
-        }
-    })
+router.get('/myteam-data/:email', async (req, res) => {
+    try{
+        const datas = await teamTemplate.find({email: req.params.email})
+        //console.log(datas)
+        res.json(datas)
+    } catch(error) {
+        res.status(404)
+    }
 
 
 

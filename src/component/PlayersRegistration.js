@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-import Protected from "./Protected";
+//import { Redirect } from 'react-router-dom';
+//import Protected from "./Protected";
 import axios from 'axios'
 
-var defaultAmount = 100;
+//var defaultAmount = 100;
 class PlayersRegistration extends Component {
     constructor() {
         super()
