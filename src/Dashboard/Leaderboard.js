@@ -3,31 +3,29 @@ import React, { Component } from 'react';
 
 class Leaderboard extends Component {
 
-    constructor(){
-        super()
-        this.state = {
-            datails: []
-        }
+    state = {
+        teamName : '',
+        teams : []
     }
 
-    componentDidMount = () => {
-        
-        axios.get('/teams', this.state.details)
-        .then((response) => {
-            alert(response.email)
-            response.map((data, index) => {
-                <div key={index}>
-                    <br />
-                    Team Name - {data.teamName} <br />
-                    Players Taken - {data.playersTaken} <br />
-                    Purchase Amount Remaining - {data.purseRemaining} <br />
-                </div>
-            })
-        })
-        .catch((error) => {
-            console.log('Internal Server Error !!')
-        })
+    componentDidMount = () =>{
+        this.getTeams();
+    }
 
+    getTeams = () =>{
+        axios.get('http://localhost:8080/teams')
+        .then((response) =>{
+            const data = response.data;
+            this.setState({teams : data});
+            console.log("Teams Recieved",data);
+        })
+        .catch(()=>{
+            console.log("Teams Not Recieved");
+        });
+    }
+
+    displayTeams = (teams) =>{
+        if(!teams.length)  return null;
     }
 
     render(){
