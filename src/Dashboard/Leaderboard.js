@@ -26,6 +26,12 @@ class Leaderboard extends Component {
 
     displayTeams = (teams) =>{
         if(!teams.length)  return null;
+
+        return teams.map((team,index) =>(
+            <div key = {index}>
+                <h3>{team.email}</h3>
+            </div>
+        ))
     }
 
     render(){
@@ -33,7 +39,8 @@ class Leaderboard extends Component {
             <div>
                 Leaderboard<br/>
                 ----------------------------------------------------------------
-                {this.state.details}
+                
+                {this.displayTeams(this.state.teams)}
             </div>
         );
     }

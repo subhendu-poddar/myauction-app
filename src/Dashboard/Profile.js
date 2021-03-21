@@ -6,25 +6,26 @@ class Profile extends Component {
 
 
 
-    /*showProfile = () => {
-        var user = localStorage.getItem('team')
-        var email = user[0].email   
-        const url = 'http://localhost:8080/myteam-data'
+    showProfile = () => {
+        let user = localStorage.getItem('team')
+        user = JSON.parse(user)
+        console.log(user);  
+        return (
+            <div>
+                My Team : {user.teamName} <br/>
+                Manager : {user.manager} <br />
+                Players Taken : {user.playersTaken} <br />
+                Purse Remaining : {user.purseRemaining} <br />
+            </div>
+        )
 
-        try{
-            const res = axios.get(`${url}/${email}`);
-            console.log(res)
-        } catch(error) {
-            console.log(error)
-        }
-
-    }*/
+    }
     render() {
         return (
             <div>
                 Welcome to Profile!!
                 <h1/>
-                {/*{this.showProfile()*/}
+                {this.showProfile()}
 
             </div>
             
