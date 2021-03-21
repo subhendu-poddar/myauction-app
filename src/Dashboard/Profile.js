@@ -24,6 +24,10 @@ class Profile extends Component {
         });
     }
 
+    displayTeams = (teams) =>{
+        if(!teams.length)  return null;
+    }
+
 
     /*showProfile = () => {
         var user = localStorage.getItem('team')
@@ -44,6 +48,7 @@ class Profile extends Component {
                 Welcome to Profile!!
                 <h1/>
                 {/*{this.showProfile()*/}
+
             </div>
             
         );
