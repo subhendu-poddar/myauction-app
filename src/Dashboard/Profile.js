@@ -3,9 +3,31 @@ import axios from 'axios'
 
 class Profile extends Component {
     
-    showProfile = () => {
+    state = {
+        teamName : '',
+        teams : []
+    }
+
+    componentDidMount = () =>{
+        this.getTeams();
+    }
+
+    getTeams = () =>{
+        axios.get('http://localhost:8080/teams')
+        .then((response) =>{
+            const data = response.data;
+            this.setState({teams : data});
+            console.log("Teams Recieved",data);
+        })
+        .catch(()=>{
+            console.log("Teams Not Recieved");
+        });
+    }
+
+
+    /*showProfile = () => {
         var user = localStorage.getItem('team')
-        var email = user[0].email
+        var email = user[0].email   
         const url = 'http://localhost:8080/myteam-data'
 
         try{
@@ -15,13 +37,13 @@ class Profile extends Component {
             console.log(error)
         }
 
-    }
+    }*/
     render() {
         return (
             <div>
                 Welcome to Profile!!
                 <h1/>
-                {this.showProfile()}
+                {/*{this.showProfile()*/}
             </div>
             
         );

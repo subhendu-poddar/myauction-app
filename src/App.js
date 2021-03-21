@@ -8,6 +8,7 @@ import Register from './component/Register'
 import PlayersRegistration from './component/PlayersRegistration.js'
 
 function App() {
+  
   return (
     <div className="App">
       <Router>

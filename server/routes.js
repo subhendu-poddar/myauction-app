@@ -122,7 +122,7 @@ router.get('/players', (req, res) => {
 router.get('/myteam-data/:email', async (req, res) => {
     try{
         const datas = await teamTemplate.find({email: req.params.email})
-        //console.log(datas)
+         console.log(datas)
         res.json(datas)
     } catch(error) {
         res.status(404)
