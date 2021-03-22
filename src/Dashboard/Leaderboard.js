@@ -5,7 +5,7 @@ class Leaderboard extends Component {
 
     state = {
         teamName : '',
-        teams : []
+        teams : []  
     }
 
     componentDidMount = () =>{
@@ -13,7 +13,7 @@ class Leaderboard extends Component {
     }
 
     getTeams = () =>{
-        axios.get('http://localhost:8080/teams')
+        axios.get('http://localhost:8080/teams/')
         .then((response) =>{
             const data = response.data;
             this.setState({teams : data});
@@ -29,7 +29,7 @@ class Leaderboard extends Component {
 
         return teams.map((team,index) =>(
             <div key = {index}>
-                <h3>{team.email}</h3>
+                <h3>{team.teamName}</h3>
             </div>
         ))
     }

@@ -24,7 +24,7 @@ class Login extends Component {
 
         axios.post('http://localhost:8080/team-signin', user)
             .then((response) => {
-                console.log(response)
+                //console.log(response)
                 if (!response.data.success) {
                     alert('Invalid Email or Password !!')
                     this.resetState()
