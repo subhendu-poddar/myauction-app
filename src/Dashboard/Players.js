@@ -1,34 +1,36 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
-class Players extends Component {
+class player extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            datails: []
-        }
+    state = {
+        players: []
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        this.getPlayers();
+    }
 
-        let url = 'http://localhost:8000/players'
-        fetch(url)
-            .then((result) => result.json())
+    getPlayers = () => {
+        axios.get('http://localhost:8080/players/')
             .then((response) => {
-                let fetchDetails = response.map((data, index) => {
-                    //console.log(data)
-                    return (
-                        <div key={index}>
-                            <br />
-                            Player Name - {data.Name} <br />
-                            Email Id - {data.email} <br/>
-                            Base Bid Amount - {data.baseBidAmount} <br />
-                        </div>
-                    )
-                })
-                this.setState({ details: fetchDetails })
+                const data = response.data;
+                this.setState({ players: data });
+                console.log("players data Recieved", data);
             })
+            .catch(() => {
+                console.log("Teams Not Recieved");
+            });
+    }
 
+    displayPlayers = (players) => {
+        if (!players.length) return null;
+
+        return players.map((player, index) => (
+            <div key={index}>
+                <h4>Player-{player.name} :: Base_Bid_Amount-{player.baseBidAmount} </h4>
+            </div>
+        ))
     }
 
     render() {
@@ -36,11 +38,12 @@ class Players extends Component {
             <div>
                 Players<br />
                 ----------------------------------------------------------------
-                {this.state.details}
+
+                {this.displayPlayers(this.state.players)}
             </div>
         );
     }
 
 }
 
-export default Players;
+export default player;
