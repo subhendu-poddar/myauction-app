@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-
+import '../App.css'
 class NavMenu extends Component {
 
     logout = () =>{
@@ -14,12 +14,12 @@ class NavMenu extends Component {
         var loggedin = JSON.parse(localStorage.getItem('team'))
         return (
             loggedin?
-                <div>
+                <div className="body">
                     {/*<Link to="Home"> Home</Link>*/}
                     <Link to="/logout" onClick={this.logout}>Log Out</Link>
                 </div>
                 :
-                <div>
+                <div className="body">
                     {/*<Link to="Home"> Home</Link>*/}
                     <Link to="/register">Team Registration</Link>
                     <Link to="/login">Team Login</Link>

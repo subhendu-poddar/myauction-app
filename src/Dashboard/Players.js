@@ -11,7 +11,7 @@ class Players extends Component {
 
     componentDidMount() {
 
-        let url = 'http://localhost:8000/players'
+        let url = 'http://localhost:8080/players'
         fetch(url)
             .then((result) => result.json())
             .then((response) => {

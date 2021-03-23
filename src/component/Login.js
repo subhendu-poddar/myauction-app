@@ -3,8 +3,8 @@ import React, { Component } from "react";
 //import Home from './Home';
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from 'axios'
-
 import Protected from "./Protected";
+import '../App.css'
 //import Router from 'react-router-dom';
 
 
@@ -55,12 +55,13 @@ class Login extends Component {
         
         return (
            
-            <div>
+            <div className="body">
                 Login Page
                 <br />
                 <Protected/>
                 <br />
-                <input 
+                <input
+                    className="demo"
                     type="text" 
                     placeholder="Email" 
                     value= {this.state.email}
