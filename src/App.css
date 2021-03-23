@@ -1,3 +1,6 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: monospace, Helvetica, Arial, sans-serif;
+  }
 .App {
     padding: 20px;
     text-align: center;
@@ -8,11 +11,16 @@
     border-width: 2px;
     border-style: solid;
 }
+
+
 .body
 {
     background-color: #292929;
+    margin: auto;
+    align-items: center;
 }
 .demo
 {
     color:black;
+    margin: auto;
 }

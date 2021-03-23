@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Style.css';
-
+import '../App.css'
 
 
 class Auction extends Component {
@@ -38,7 +38,7 @@ class Auction extends Component {
         }
     }
     reset = () => {
-        this.setState({count : this.state.count = 0});
+        this.setState({ count: this.state.count = 0 });
     }
 
     render() {
@@ -46,39 +46,37 @@ class Auction extends Component {
             <div>
                 Welcome to Auction Arena!
                 <br /> <br />
-                <div className='profileBox'>
-                    {/*<img src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" />*/}
-                    <br />
-                    <br />
-                    <h1>Name : </h1>
-                    <h1>Base Amount : </h1>
+                <div className='card'>
+                    <div className='container'>
+                        <h2>Name : need to fetch </h2>
+                        <h3>Base Amount : need to fetch </h3>
+                    </div>
                 </div>
-                <br />
                 <br />
                 <div>
-                    <button onClick={this.inc} className="button1"><h1>+</h1></button> <br /> <br />
-                    <button onClick={this.dec} className="button1"><h1>-</h1></button> <br /> <br />
-                    <h1>{this.state.count}</h1>
-                    <button onClick={this.reset} className='button2'><h2>Sold To</h2></button>
+                    <br />
+                    <h1 className="counter">{this.state.count}</h1>
+                    <br />
+                    <button onClick={this.inc} className="btn1"><h1>+</h1></button>
+                    <button onClick={this.dec} className="btn2"><h3>-</h3></button>
+                    <br /> <br />
+                    <button onClick={this.reset} className='submit_btn'><h2>Sold To ></h2></button>
                 </div>
                 <br />
-                <div className='profileBox'>
-                    Teams Amounts Remaining
-                    <h2>Team1 : </h2>
-                    <h3>Amount : </h3>
-                </div>
-                <br />
-                <div className='profileBox'>
-                    Teams Amounts Remaining
-                    <h2>Team2 : </h2>
-                    <h3>Amount : </h3>
-                </div>
-                <br />
-                <div className='profileBox'>
-                    Teams Amounts Remaining
-                    <h2>Team3 : </h2>
-                    <h3>Amount : </h3>
-                </div>
+                <table className='card'>
+                    <tr>
+                        <th style={{ width: '50%' }}>Team</th>
+                        <th>Purse Amount Remaining</th>
+                    </tr>
+                    <tr>
+                        <td>CSK</td>
+                        <td>need to fetch</td>
+                    </tr>
+                    <tr>
+                        <td>MI</td>
+                        <td>need to fetch</td>
+                    </tr>
+                </table>
             </div>
 
         );

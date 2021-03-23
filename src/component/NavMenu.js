@@ -14,12 +14,12 @@ class NavMenu extends Component {
         var loggedin = JSON.parse(localStorage.getItem('team'))
         return (
             loggedin?
-                <div className="body">
+                <div>
                     {/*<Link to="Home"> Home</Link>*/}
                     <Link to="/logout" onClick={this.logout}>Log Out</Link>
                 </div>
                 :
-                <div className="body">
+                <div>
                     {/*<Link to="Home"> Home</Link>*/}
                     <Link to="/register">Team Registration</Link>
                     <Link to="/login">Team Login</Link>
