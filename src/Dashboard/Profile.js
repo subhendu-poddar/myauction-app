@@ -33,10 +33,10 @@ class Profile extends Component {
 
         return team.map((each,index) =>(
             <div key = {index}>
-                <h2>Team - {each.teamName}</h2>
-                <h2>Manager - {each.manager}</h2>
-                <h3>Players Taken - {each.playersTaken}</h3>
-                <h3>Purse Amount Remaining -{each.purseRemaining}</h3>
+                <h3>Team - {each.teamName}</h3>
+                <h3>Manager - {each.manager}</h3>
+                <h2>Players Taken - {each.playersTaken}</h2>
+                <h2>Purse Amount Remaining -{each.purseRemaining}</h2>
             </div>
         ))
     }
