@@ -64,18 +64,20 @@ class Auction extends Component {
                 </div>
                 <br />
                 <table className='card'>
-                    <tr>
-                        <th style={{ width: '50%' }}>Team</th>
-                        <th>Purse Amount Remaining</th>
-                    </tr>
-                    <tr>
-                        <td>CSK</td>
-                        <td>need to fetch</td>
-                    </tr>
-                    <tr>
-                        <td>MI</td>
-                        <td>need to fetch</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th style={{ width: '50%' }}>Team</th>
+                            <th>Purse Amount Remaining</th>
+                        </tr>
+                        <tr>
+                            <td>CSK</td>
+                            <td>need to fetch</td>
+                        </tr>
+                        <tr>
+                            <td>MI</td>
+                            <td>need to fetch</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
