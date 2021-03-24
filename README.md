@@ -6,7 +6,7 @@ An app for online aution...
 
 ## Install Dependencies
 ```
-npm intall
+npm install
 ```
 ## Run the app
 
