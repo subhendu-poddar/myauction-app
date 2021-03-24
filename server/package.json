@@ -12,7 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server",
+    "devStart": "nodemon server"
   },
   "author": "Subhendu Poddar",
   "license": "ISC"
