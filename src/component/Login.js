@@ -55,24 +55,27 @@ class Login extends Component {
         
         return (
            
-            <div className="body">
-                Login Page
+            <form className='form'>
+                <div className='form-label'>Login Page</div>
                 <br />
                 <Protected/>
                 <br />
                 <input
-                    className="demo"
+                    className='form-input'
                     type="text" 
                     placeholder="Email" 
                     value= {this.state.email}
                     onChange={(evt) => { this.setState({ email: evt.target.value }) }} /> <br /> <br />
                 <input 
+                    className='form-input'
                     type="password" 
                     placeholder="Password"
                     value={this.state.password}
                     onChange={(evt) => { this.setState({ password: evt.target.value }) }} /> <br /> <br />
-                <button onClick={(evt) => this.login(evt)} > Login </button>
-            </div>
+                <div className='button_center'>
+                    <button className='button' onClick={(evt) => this.login(evt)} > Login </button>
+                </div>
+            </form>
         )
     }
 }

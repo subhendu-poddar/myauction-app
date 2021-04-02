@@ -6,7 +6,7 @@ class Protected extends Component {
         var loggedin = JSON.parse(localStorage.getItem('team'));
         return (
             <div>
-                {loggedin ? <Redirect to="/Home" /> : null}
+                {loggedin && <Redirect to="/Home" /> }
             </div>
         );
     }

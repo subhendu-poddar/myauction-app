@@ -16,6 +16,7 @@
 .navbar-container {
   display: flex;
   flex-direction: row;
+  text-align: center;
   justify-content: space-between;
 }
 
@@ -27,6 +28,6 @@
 
 .navbar-user {
   margin-top: 0.5rem;
-  text-align: right;
+  font-size: x-large;
   color: var(--light);
 }

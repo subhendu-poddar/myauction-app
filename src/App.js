@@ -5,14 +5,15 @@ import Login from './component/Login'
 import NavMenu from './component/NavMenu'
 import Register from './component/Register'
 import PlayersRegistration from './component/PlayersRegistration.js'
+import Protected from './component/Protected'
 
 function App() {
   
   return (
-    <div className="App">
+    <div>
       <Router>
 
-        {/*<LogOut />*/}
+        <Protected/>
         <NavMenu/>
 
         <Switch>

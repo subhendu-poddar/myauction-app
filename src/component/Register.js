@@ -66,12 +66,13 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                Registration Page
+            <div className='form'>
+                <div className='form-label'>Registration Page</div>
                 <br />
                 <Protected/>
                 <br />
                 <input 
+                    className='form-input'
                     type="text" 
                     placeholder="Team Name" 
                     value = {this.state.teamName}
@@ -79,6 +80,7 @@ class Register extends Component {
                 <br /> 
                 <br />
                 <input 
+                    className='form-input'
                     type="text" 
                     placeholder="Manager Name"
                     value={this.state.manager}
@@ -86,6 +88,7 @@ class Register extends Component {
                 <br /> 
                 <br />
                 <input 
+                    className='form-input'
                     type="email" 
                     placeholder="Email"
                     value={this.state.email}
@@ -93,6 +96,7 @@ class Register extends Component {
                 <br /> 
                 <br />
                 <input 
+                    className='form-input'
                     type="password" 
                     placeholder="Password"
                     value={this.state.password}
@@ -100,13 +104,17 @@ class Register extends Component {
                 <br /> 
                 <br />
                 <input 
+                    className='form-input'
                     type="password" 
                     placeholder="Confirm Password"
                     value={this.state.c_password}
                     onChange={(evt) => { this.setState({ c_password: evt.target.value }) }} /> 
                 <br /> 
                 <br /> 
-                <button onClick={(evt) => this.register(evt)} > Register </button>
+                <div className='button_center'>
+                    <button className='button' onClick={(evt) => this.register(evt)} > Register </button>
+                </div>
+                
             </div>
         )
     }

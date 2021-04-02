@@ -64,11 +64,12 @@ class PlayersRegistration extends Component {
 
     render() {
         return (
-            <div>
-                Players Registration Page
+            <div className='form'>
+                <div className='form-label'>Player Registration Page</div>
                 <br />
                 <br />
                 <input 
+                    className='form-input'
                     type="text" 
                     placeholder="Name" 
                     value= {this.state.name}
@@ -76,6 +77,7 @@ class PlayersRegistration extends Component {
                 <br /> 
                 <br />
                 <input 
+                    className='form-input'
                     type="email" 
                     placeholder="Email"
                     value={this.state.email}
@@ -83,6 +85,7 @@ class PlayersRegistration extends Component {
                 <br /> 
                 <br />
                 <input
+                    className='form-input'
                     type="password"
                     placeholder="Password"
                     value={this.state.password}
@@ -90,6 +93,7 @@ class PlayersRegistration extends Component {
                 <br />
                 <br />
                 <input
+                    className='form-input'
                     type="password"
                     placeholder="Confirm Password"
                     value={this.state.c_password}
@@ -97,13 +101,17 @@ class PlayersRegistration extends Component {
                 <br />
                 <br />
                 <input 
+                    className='form-input'
                     type="number" 
                     placeholder="baseBidAmount"
                     value={this.state.baseBidAmount}
                     onChange={(evt) => { this.setState({ baseBidAmount: evt.target.value }) }} /> 
                 <br /> 
                 <br />
-                <button onClick={(evt) => this.submit(evt)} > Submit </button>
+                <div className='button_center'>
+                    <button className='button' onClick={(evt) => this.submit(evt)} > Submit </button>
+                </div>
+                
             </div>
         )
     }

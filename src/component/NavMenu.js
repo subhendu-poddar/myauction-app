@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../App.css'
+import Dashboard from '../Dashboard/Dashboard';
+import Home from './Home';
+
 class NavMenu extends Component {
-
-    logout = () =>{
-        /*alert("Logged Out Successfully");*/
-        localStorage.clear();
-        window.location.href = '/home'
-    }
-
 
     render() {
         var loggedin = JSON.parse(localStorage.getItem('team'))
         return (
-            loggedin?
-                <div>
-                    {/*<Link to="Home"> Home</Link>*/}
-                    <Link to="/logout" onClick={this.logout}>Log Out</Link>
+            <div>
+                <div className='navbar'>
+                    <div className='container'>
+                        {/* {loggedin && <Redirect to='/Home' />} */}
+                        { !loggedin &&
+                            <div className='navbar-container'>
+                                {/*<Link to="Home"> Home</Link>*/}
+                                <Link className='navbar-brand' to="/register">Team Registration</Link>
+                                <Link className='navbar-brand' to="/login">Team Login</Link>
+                                <Link className='navbar-brand' to="/players-registration">Players Registration</Link>
+                            </div>
+                        }
+                    </div>
                 </div>
-                :
-                <div>
-                    {/*<Link to="Home"> Home</Link>*/}
-                    <Link to="/register">Team Registration</Link>
-                    <Link to="/login">Team Login</Link>
-                    <Link to="/players-registration">Players Registration</Link>
-                </div>
+            </div>
         );
     }
 }
