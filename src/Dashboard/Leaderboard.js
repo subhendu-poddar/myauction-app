@@ -29,7 +29,7 @@ class Leaderboard extends Component {
 
         return teams.map((team,index) =>(
             <div key = {index}>
-                <h3>Team-{team.teamName} :: playersTaken- {team.playersTaken}</h3>
+                <h3>Team-{team.teamName} :: playersTaken- {team.playersTaken} :: purse - {team.purseRemaining}</h3>
             </div>
         ))
     }

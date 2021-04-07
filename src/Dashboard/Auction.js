@@ -8,7 +8,8 @@ class Auction extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 0
+            count: 0,
+            btn : 1
         }
     }
 
@@ -38,12 +39,18 @@ class Auction extends Component {
         }
     }
     reset = () => {
-        this.setState({ count: this.state.count = 0 });
+        if(this.state.btn === 1)
+            this.setState({ btn : this.state.btn = 0 });
+        else
+        {
+            this.setState({ btn : this.state.btn = 1 });
+            this.setState({ count: this.state.count = 0 });
+        }
     }
 
     render() {
         return (
-            <div>
+            <div className="center">
                 Welcome to Auction Arena!
                 <br /> <br />
                 <div className='card'>
@@ -59,11 +66,18 @@ class Auction extends Component {
                     <br />
                     <button onClick={this.inc} className="btn1"><h1>+</h1></button>
                     <button onClick={this.dec} className="btn2"><h3>-</h3></button>
-                    <br /> <br />
-                    <button onClick={this.reset} className='submit_btn'><h2>Sold To </h2></button>
-                </div>
+                    <br /> <br /> </div>
+                    {this.state.btn ? <button onClick={this.reset} className='submit_btn'><h2>Sold To </h2></button>
+                     : <div>
+                     <button onClick={this.reset} className='team_btn'><h2>MI</h2></button>
+                     <button onClick={this.reset} className="team_btn"><h2>CSK</h2></button>
+                     <button onClick={this.reset} className="team_btn"><h2>RCB</h2></button>
+                     <button onClick={this.reset} className="team_btn"><h2>KKR</h2></button>
+                     </div>}
+                    
+                
                 <br />
-                <table className='card'>
+                {/*<table className='card'>
                     <tbody>
                         <tr>
                             <th style={{ width: '50%' }}>Team</th>
@@ -78,7 +92,7 @@ class Auction extends Component {
                             <td>need to fetch</td>
                         </tr>
                     </tbody>
-                </table>
+            </table>*/}
             </div>
 
         );
