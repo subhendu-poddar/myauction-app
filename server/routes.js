@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const teamTemplate = require('./Models/teamSignup')
 const playerTemplate = require('./Models/playerSignup')
+const Admin = require('./Models/admin')
 
 
 router.post('/team-signup', (req, res) => {
@@ -37,6 +38,7 @@ router.post('/team-signup', (req, res) => {
         }
     })
 })
+
 router.post('/team-signin', (req, res) => {
     teamTemplate.find({
         email: req.body.email,
@@ -97,8 +99,6 @@ router.post('/player-signup', (req, res) => {
     })
 })
 
-
-
 router.get('/teams', (req, res) => {
     teamTemplate.find({})
         .then((data) => {
@@ -117,6 +117,16 @@ router.get('/players', (req, res) => {
         .catch((error) => {
             console.log(`error found: ${error}`)
         })
+})
+
+router.get('/admins', (req, res) => {
+    Admin.find({})
+    .then((data) => {
+        res.json(data)
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 })
 
 router.get('/teams/:email', async (req, res) => {
@@ -139,6 +149,68 @@ router.get('/teams/:email', async (req, res) => {
     // })
 })
 
+router.post('/admin/signin', async (req, res) => {
+    try {
+        const user = await Admin.findOne({
+            email: req.body.email
+        })
+        if(!user){
+            res.send({
+                success: false,
+                message: "email doesn't exist"
+            })
+        }
+        const {email, password} = user
+        const valid = user.comparePassword(req.body.password)
+        if(valid){
+            res.send({
+                success: true,
+                message: 'signin successful !!'
+            })
+        }
+        else{
+            res.send({
+                success: false,
+                message: 'Invalid Credentials !!'
+            })
+        }
+
+    }catch(err){
+        res.status(400)
+    }
+})
+
+router.post('/admin/signup', async (req, res) => {
+    try {
+        const user = await Admin.findOne({
+            email: req.body.email
+        })
+        if(user){
+            res.send({
+                success: false,
+                message: 'Invalid Credentials !!'
+            })
+        }
+        else{
+            const signedUpUser = new Admin(req.body)
+            signedUpUser.save((error) => {
+                if (error) {
+                    console.log('Oops, Something wrong !!')
+                }
+                else {
+                    console.log('Data has been saved.')
+                }
+            })
+            return res.send({
+                success: true,
+                message: 'we received your data !!'
+            })
+        }
+
+    } catch (err) {
+        res.status(400)
+    }
+})
 
 
 

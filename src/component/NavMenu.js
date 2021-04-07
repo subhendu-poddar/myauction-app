@@ -19,6 +19,7 @@ class NavMenu extends Component {
                                 <Link className='navbar-brand' to="/register">Team Registration</Link>
                                 <Link className='navbar-brand' to="/login">Team Login</Link>
                                 <Link className='navbar-brand' to="/players-registration">Players Registration</Link>
+                                <Link className='navbar-brand' to='/admin/signin'>Admin</Link>
                             </div>
                         }
                     </div>

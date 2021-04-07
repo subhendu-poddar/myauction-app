@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "devStart": "nodemon server"
   },
   "author": "Subhendu Poddar",

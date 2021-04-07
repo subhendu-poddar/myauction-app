@@ -60,7 +60,7 @@ class Auction extends Component {
                     <button onClick={this.inc} className="btn1"><h1>+</h1></button>
                     <button onClick={this.dec} className="btn2"><h3>-</h3></button>
                     <br /> <br />
-                    <button onClick={this.reset} className='submit_btn'><h2>Sold To ></h2></button>
+                    <button onClick={this.reset} className='submit_btn'><h2>Sold To </h2></button>
                 </div>
                 <br />
                 <table className='card'>
