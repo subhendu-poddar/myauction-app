@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Style.css';
 import '../App.css'
+import axios from 'axios';
 
 
 class Auction extends Component {
@@ -9,7 +10,9 @@ class Auction extends Component {
         super(props);
         this.state = {
             count: 0,
-            btn : 1
+            btn: 1,
+            team: "",
+            sold_team : ""
         }
     }
 
@@ -38,15 +41,28 @@ class Auction extends Component {
             this.setState({ count: this.state.count - 500 });
         }
     }
-    reset = () => {
-        if(this.state.btn === 1)
-            this.setState({ btn : this.state.btn = 0 });
-        else
-        {
-            this.setState({ btn : this.state.btn = 1 });
+    reset(team) {
+        if (this.state.btn === 1) {
+            this.setState({ btn: this.state.btn = 0 });
+        }
+        else {
+            console.log(team);
+            let bidAmt = this.state.count;
+            console.log(bidAmt);
+            axios.get('http://localhost:8080/teams/'+ team)
+                .then((response) => {
+                    let data = response.data;
+                    this.setState({ sold_team : data });
+                })
+                .catch(() => {
+                    console.log("Unable to fetch sold team");
+                });
+            this.setState({ btn: this.state.btn = 1 });
             this.setState({ count: this.state.count = 0 });
         }
     }
+
+
 
     render() {
         return (
@@ -67,15 +83,15 @@ class Auction extends Component {
                     <button onClick={this.inc} className="btn1"><h1>+</h1></button>
                     <button onClick={this.dec} className="btn2"><h3>-</h3></button>
                     <br /> <br /> </div>
-                    {this.state.btn ? <button onClick={this.reset} className='submit_btn'><h2>Sold To </h2></button>
-                     : <div>
-                     <button onClick={this.reset} className='team_btn'><h2>MI</h2></button>
-                     <button onClick={this.reset} className="team_btn"><h2>CSK</h2></button>
-                     <button onClick={this.reset} className="team_btn"><h2>RCB</h2></button>
-                     <button onClick={this.reset} className="team_btn"><h2>KKR</h2></button>
-                     </div>}
-                    
-                
+                {this.state.btn ? <button onClick={() => this.reset()} className='submit_btn'><h2>Sold To </h2></button>
+                    : <div>
+                        <button onClick={() => this.reset("mi")} className='team_btn'><h2>MI</h2></button>
+                        <button onClick={() => this.reset("csk")} className="team_btn"><h2>CSK</h2></button>
+                        <button onClick={() => this.reset("rcb")} className="team_btn"><h2>RCB</h2></button>
+                        <button onClick={() => this.reset("kkr")} className="team_btn"><h2>KKR</h2></button>
+                    </div>}
+
+
                 <br />
                 {/*<table className='card'>
                     <tbody>
