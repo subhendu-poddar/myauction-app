@@ -51,10 +51,23 @@ class Auction extends Component {
                 .then((response) => {
                     let data = response.data;
                     this.setState({ sold_team : data });
+                    console.log(data);
                 })
                 .catch(() => {
                     console.log("Unable to fetch sold team");
                 });
+            const t = {
+                "teamName" : team,
+                "purseRemaining" : "purseRemaining" - bidAmt
+            }
+            {/*axios.put('http://localhost:8080/teams/'+ team, t)
+                .then((t)=>{
+                    console.log(t);
+                })
+                .catch((error) =>{
+                    console.log(error);
+                })
+            */}
             this.setState({ btn: this.state.btn = 1 });
             this.setState({ count: this.state.count = 0 });
         }
