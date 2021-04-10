@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Profile from '../Dashboard/Profile'
 import Players from "../Dashboard/Players"
-import Navigation from "../Dashboard/AdminNavigation"
+import Navigation from "./Navigation/AdminNavigation"
 import Leaderboard from "../Dashboard/Leaderboard"
-import Auction from "../Dashboard/Auction"
+// import Auction from "../Dashboard/Auction"
+import ChoosePlayer from './AuctionPage/ChoosePlayer'
 
 class AdminPage extends Component {
 
@@ -35,7 +36,7 @@ class AdminPage extends Component {
             <Navigation />
 
             <Switch>
-              <Route path='/Auction'> <Auction/> </Route>
+              <Route path='/Auction'> <ChoosePlayer/> </Route>
               <Route path='/Leaderboard'> <Leaderboard/> </Route>
               {/* <Route path='/Profile'> <Profile /> </Route>
               <Route path='/Players'> <Players /> </Route> */}

@@ -3,6 +3,7 @@ const router = express.Router()
 const teamTemplate = require('./Models/teamSignup')
 const playerTemplate = require('./Models/playerSignup')
 const Admin = require('./Models/admin')
+const { useContext } = require('react')
 
 
 router.post('/team-signup', (req, res) => {
@@ -131,10 +132,10 @@ router.get('/admins', (req, res) => {
 
 router.get('/teams/:email', async (req, res) => {
     try{
-        const datas = await teamTemplate.find({email: req.params.email})
-        console.log(datas)
-        res.json(datas)
-    } catch(error) {
+        const data = await teamTemplate.find({email: req.params.email})
+        console.log(data)
+        res.json(data)
+    } catch(error) { 
         res.status(404)
     }
 
@@ -208,6 +209,62 @@ router.post('/admin/signup', async (req, res) => {
         }
 
     } catch (err) {
+        res.status(400)
+    }
+})
+
+router.put('/players/update/:email', async (req, res) => {
+    try{
+        const userId = await playerTemplate.findOne({email: req.params.email})
+        if(!userId){
+            res.send({
+                success: false,
+                message: "Player doesn't exists !!"
+            })
+        }
+        const user = await playerTemplate.findByIdAndUpdate(userId._id, req.body)
+        
+        if(user){
+            res.send({
+                success: true,
+                message: "Data successfully updated !!"
+            })
+        }
+        else{
+            res.send({
+                success: false,
+                message: "invalid credentials"
+            })
+        }
+    }catch(error) {
+        res.status(400)
+    }
+})
+
+router.put('/teams/update/:email', async (req, res) => {
+    try {
+        const userId = await teamTemplate.findOne({ email: req.params.email })
+        if (!userId) {
+            res.send({
+                success: false,
+                message: "Team doesn't exists !!"
+            })
+        }
+        const user = await teamTemplate.findByIdAndUpdate(userId._id, req.body)
+
+        if (user) {
+            res.send({
+                success: true,
+                message: "Data successfully updated !!"
+            })
+        }
+        else {
+            res.send({
+                success: false,
+                message: "invalid credentials"
+            })
+        }
+    } catch (error) {
         res.status(400)
     }
 })

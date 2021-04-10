@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './Style.css';
-import '../App.css'
 import axios from 'axios';
 
 
@@ -15,7 +13,7 @@ class Auction extends Component {
             sold_team : ""
         }
     }
-
+    
     inc = () => {
         if (this.state.count < 1000) {
             this.setState({ count: this.state.count + 100 });
@@ -61,8 +59,6 @@ class Auction extends Component {
             this.setState({ count: this.state.count = 0 });
         }
     }
-
-
 
     render() {
         return (

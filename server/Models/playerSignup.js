@@ -9,8 +9,16 @@ const signupTemplate = new mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     baseBidAmount: {
         type: Number,
+        required: true
+    },
+    sold: {
+        type: Boolean,
         required: true
     },
     date: {

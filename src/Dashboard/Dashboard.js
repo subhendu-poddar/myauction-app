@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Profile from './Profile'
 import Players from "./Players"
-import Navigation from "./TeamNavigation"
+import Navigation from "../Pages/Navigation/TeamNavigation"
 import Leaderboard from "./Leaderboard"
 import Auction from "./Auction"
 

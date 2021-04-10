@@ -96,7 +96,7 @@ body{
     text-align: center;
     padding: 8px;
   }
-  .submit_btn {
+  .submit_btn, .team_btn {
     border: none;
     background: #404040;
     color: #ffffff !important;

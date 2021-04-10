@@ -10,6 +10,7 @@ class PlayersRegistration extends Component {
         this.state = {
             name: '',
             email: '',
+            sold: false,
             password: '',
             c_password: '',
             baseBidAmount: ''
