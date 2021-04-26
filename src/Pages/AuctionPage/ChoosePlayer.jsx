@@ -44,12 +44,12 @@ class ChoosePlayer extends Component {
                 ------------------------
                 {players.map((player, index) => (
                     <div key={index}>
-                        {!player.sold &&
+                        {player.soldTo==="None" &&
                         <button onClick={() => 
                             this.setState({ 
                                 selected: player, 
                                 clicked: true, 
-                                players: player
+                                players: []
                             }) 
                         }> 
                         {player.name}

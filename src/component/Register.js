@@ -13,7 +13,7 @@ class Register extends Component {
             email:'',
             password:'',
             purseRemaining: defaultAmount,
-            playersTaken: 0,
+            playersTaken: [],
             c_password:''
         }
     }
@@ -51,7 +51,7 @@ class Register extends Component {
             })
     }
     
- 
+
     resetState = () => {
         this.setState({
             teamName: '',

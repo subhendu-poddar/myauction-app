@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class Auction extends Component {
 
     constructor(props) {
@@ -9,9 +8,10 @@ class Auction extends Component {
         this.state = {
             teams: [],
             bidAmount: 0,
-            btn: 1,
-            team: "",
-            sold_team: ""
+            teamFixed: false,
+            priceFixed: false,
+            selected: '',
+            sold_team: ''
         }
     }
 
@@ -39,9 +39,14 @@ class Auction extends Component {
             <div>
                 {teams.map((team, index) => (
                     <div key={index} className="team_btn">
-                        <button 
-                                onClick={() => this.AssignToTeam(team)} 
-                                className="team_btn"
+                        <button className="team_btn"
+                                onClick={() => 
+                                    this.setState({
+                                        selected: team,
+                                        teamFixed: true,
+                                        teams: []
+                                    })
+                                }
                             >
                             {team.teamName}
                         </button>
@@ -63,33 +68,34 @@ class Auction extends Component {
         this.setState({ bidAmount: newValue })
     }
 
-    AssignToTeam = (team) => {
-        if (this.state.btn === 1) {
-            this.setState({ btn: this.state.btn = 0 });
-        }
-        else {
-            console.log(team);
-            let bidAmt = this.state.bidAmount;
-            console.log(bidAmt);
-            axios.get('http://localhost:8080/teams/' + team)
-                .then((response) => {
-                    let data = response.data;
-                    this.setState({ sold_team: data });
-                })
-                .catch(() => {
-                    console.log("Unable to fetch sold team");
-                });
-            this.setState({ btn: this.state.btn = 1 });
-            this.setState({ bidAmount: this.state.bidAmount = 0 });
-        }
+    AssignToTeam = () => {
+        const player = this.props.player
+        const team = this.state.selected
+
+        player.soldTo = team.email
+
+        team.purseRemaining = team.purseRemaining - this.state.bidAmount
+        team.playersTaken.push(player.email)
+
+        const url = "http://localhost:8080"
+        const data1 = axios.put(url+'/players/update/'+player.email, player)
+        const data2 = axios.put(url+'/teams/update/'+team.email, team)
+
+        return(
+            <div>
+                {data1.success ? <div> Player {player.name} Updated</div> : <div> player Update Operation failed</div>}
+                {data2.success ? <div> Team {team.teamName} Updated</div> : <div> Team Update Operation failed</div>}
+            </div>
+        )
+
+
     }
 
-    render() {
-        const player = this.props.player
+    heading = (player) => {
         return (
-            <div className="center">
+            <div>
                 Welcome to Auction Arena!!
-                <br /> <br />
+                    <br /> <br />
                 <div className='card'>
                     <div className='container'>
                         <h2>Name : {player.name} </h2>
@@ -97,22 +103,46 @@ class Auction extends Component {
                     </div>
                 </div>
                 <br />
-                <div>
-                    <br /> 
-                    {/* + ans - buttons */}
-                    <h1 className="counter">{this.state.bidAmount}</h1>     <br />
-                    <button onClick={this.inc} className="btn1"><h1>+</h1></button>
-                    <button onClick={this.dec} className="btn2"><h3>-</h3></button>
-                    <br /> <br /> 
-                </div>
-                {this.state.btn ? 
-                    <button onClick={() => this.AssignToTeam(this.state.teams)}
-                            className='submit_btn'>     <h2>Sold To </h2>
-                    </button>
-                    : <div>
-                        {this.teamList(this.state.teams)}
-                    </div>
+            </div>
+        )
+    }
+    soldOption = () => {
+        return (
+            <div>
+                <br />
+                {/* + ans - buttons */}
+                <h1 className="counter">{this.state.bidAmount}</h1>     <br />
+                <button onClick={this.inc} className="btn1"><h1>+</h1></button>
+                <button onClick={this.dec} className="btn2"><h3>-</h3></button>
+                <br /> <br />
+
+                <button className='submit_btn'
+                    onClick={() =>
+                        this.setState({ priceFixed: true })
+                    }
+                >     <h2>Sold To </h2>
+                </button>
+            </div>
+        )
+    }
+
+    render() {
+        const player = this.props.player
+        return (
+            <div className="center">
+                {this.heading(player)}
+
+                {   this.state.priceFixed ?
+                        this.state.teamFixed ?
+                            this.AssignToTeam()
+                            // window.location.href = '/Adminpage'
+                        :   this.teamList()
+                    :   this.soldOption()
                 }
+                
+                {/* {!this.state.priceFixed && !this.state.teamFixed && this.soldOption()}
+                {this.state.priceFixed && !this.state.teamFixed && this.teamList()}
+                {this.state.priceFixed && this.state.teamFixed && this.AssignToTeam()} */}
 
                 <br />
                 

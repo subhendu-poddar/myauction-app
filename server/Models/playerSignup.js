@@ -17,9 +17,8 @@ const signupTemplate = new mongoose.Schema({
         type: Number,
         required: true
     },
-    sold: {
-        type: Boolean,
-        required: true
+    soldTo: {
+        type: String
     },
     date: {
         type: Date,

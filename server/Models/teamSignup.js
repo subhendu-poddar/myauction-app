@@ -21,10 +21,9 @@ const signupTemplate = new mongoose.Schema({
         type: Number,
         required: true
     },
-    playersTaken: {
-        type: Number,
-        required: true
-    },
+    playersTaken: [{
+        type: String
+    }],
     date: {
         type: Date,
         default: Date.now()

@@ -223,19 +223,20 @@ router.put('/players/update/:email', async (req, res) => {
                 message: "Player doesn't exists !!"
             })
         }
-        const user = await playerTemplate.findByIdAndUpdate(userId._id, req.body)
-        
-        if(user){
-            res.send({
-                success: true,
-                message: "Data successfully updated !!"
-            })
-        }
-        else{
-            res.send({
-                success: false,
-                message: "invalid credentials"
-            })
+        else {
+            const user = await playerTemplate.findByIdAndUpdate(userId._id, req.body)
+            if(user){
+                res.send({
+                    success: true,
+                    message: "Data successfully updated !!"
+                })
+            }
+            else{
+                res.send({
+                    success: false,
+                    message: "invalid credentials"
+                })
+            }
         }
     }catch(error) {
         res.status(400)
@@ -251,26 +252,27 @@ router.put('/teams/update/:email', async (req, res) => {
                 message: "Team doesn't exists !!"
             })
         }
-        const user = await teamTemplate.findByIdAndUpdate(userId._id, req.body)
+        else{
+            const user = await teamTemplate.findByIdAndUpdate(userId._id, req.body)
 
-        if (user) {
-            res.send({
-                success: true,
-                message: "Data successfully updated !!"
-            })
+            if (user) {
+                res.send({
+                    success: true,
+                    message: "Data successfully updated !!"
+                })
+            }
+            else {
+                res.send({
+                    success: false,
+                    message: "invalid credentials"
+                })
+            }
         }
-        else {
-            res.send({
-                success: false,
-                message: "invalid credentials"
-            })
-        }
+        
     } catch (error) {
         res.status(400)
     }
 })
-
-
 
 
 module.exports = router
