@@ -7,7 +7,7 @@ class Auction extends Component {
         super(props);
         this.state = {
             teams: [],
-            bidAmount: 0,
+            bidAmount: this.props.player.baseBidAmount,
             teamFixed: false,
             priceFixed: false,
             selected: '',
@@ -68,25 +68,33 @@ class Auction extends Component {
         this.setState({ bidAmount: newValue })
     }
 
-    AssignToTeam = () => {
-        const player = this.props.player
-        const team = this.state.selected
+    async AssignToTeam() {
+        try {
+            const player = this.props.player
+            const team = this.state.selected
 
-        player.soldTo = team.email
+            player.soldTo = team.email
 
-        team.purseRemaining = team.purseRemaining - this.state.bidAmount
-        team.playersTaken.push(player.email)
+            team.purseRemaining = team.purseRemaining - this.state.bidAmount
+            team.playersTaken.push(player.email)
 
-        const url = "http://localhost:8080"
-        const data1 = axios.put(url+'/players/update/'+player.email, player)
-        const data2 = axios.put(url+'/teams/update/'+team.email, team)
+            const url = "http://localhost:8080"
+            const data1 = await axios.put(url + '/players/update/' + player.email, player)
+            const data2 = await axios.put(url + '/teams/update/' + team.email, team)
 
-        return(
-            <div>
-                {data1.success ? <div> Player {player.name} Updated</div> : <div> player Update Operation failed</div>}
-                {data2.success ? <div> Team {team.teamName} Updated</div> : <div> Team Update Operation failed</div>}
-            </div>
-        )
+            return (
+                <div>
+                    {console.log(data1)} 
+                    {console.log(data2)}
+                    {data1.success ? <div> Player {player.name} Updated</div> : <div> player Update Operation failed</div>}
+                    {data2.success ? <div> Team {team.teamName} Updated</div> : <div> Team Update Operation failed</div>}
+                </div>
+            )
+        }catch(error){
+            return(
+                <div>Error found: {error}</div>
+            )
+        }
 
 
     }
