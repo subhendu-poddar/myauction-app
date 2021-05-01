@@ -149,6 +149,15 @@ router.get('/teams/:email', async (req, res) => {
     //     console.log(`error found: ${error}`)
     // })
 })
+router.get('/players/:email', async (req, res) => {
+    try{
+        const data = await playerTemplate.find({email: req.params.email})
+        console.log(data)
+        res.json(data)
+    } catch(error) { 
+        res.status(404)
+    }
+})
 
 router.post('/admin/signin', async (req, res) => {
     try {

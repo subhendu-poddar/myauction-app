@@ -11,7 +11,9 @@ class Auction extends Component {
             teamFixed: false,
             priceFixed: false,
             selected: '',
-            sold_team: ''
+            sold_team: '',
+            playerSold: false,
+            data: [{}]
         }
     }
 
@@ -24,7 +26,7 @@ class Auction extends Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
-                console.log("players data Received", data);
+                console.log("team data Received", data);
             })
             .catch(() => {
                 console.log("Teams Not Received");
@@ -34,20 +36,20 @@ class Auction extends Component {
     teamList = () => {
         const teams = this.state.teams
         if (!teams.length) return null;
-        
+
         return (
             <div>
                 {teams.map((team, index) => (
                     <div key={index} className="team_btn">
                         <button className="team_btn"
-                                onClick={() => 
-                                    this.setState({
-                                        selected: team,
-                                        teamFixed: true,
-                                        teams: []
-                                    })
-                                }
-                            >
+                            onClick={() =>
+                                this.setState({
+                                    selected: team,
+                                    teamFixed: true,
+                                    teams: []
+                                })
+                            }
+                        >
                             {team.teamName}
                         </button>
                     </div>
@@ -59,19 +61,94 @@ class Auction extends Component {
 
     inc = () => {
         let value = this.state.bidAmount
-        let newValue = value + (value<1000 ? 100: value<2000 ? 200 : 500)
-        this.setState({ bidAmount: newValue})
+        let newValue = value + (value < 1000 ? 100 : value < 2000 ? 200 : 500)
+        this.setState({ bidAmount: newValue })
     }
     dec = () => {
         let value = this.state.bidAmount
-        let newValue = value - (value<=0 ? value : value<=1000 ? 100 : value<=2000 ? 200 : 500)
+        let newValue = value - (value <= 0 ? value : value <= 1000 ? 100 : value <= 2000 ? 200 : 500)
         this.setState({ bidAmount: newValue })
     }
 
-    async AssignToTeam() {
+    teamUpdated = (data) => {
+        console.log("data", data);
+        this.setState({ playerSold: false })
+        return (
+            <div>
+                Hi
+            </div>
+        )
+    }
+
+    AssignToTeam = () => {
+        const player = this.props.player;
+        //console.log("player",player);
+        let team = this.state.selected;
+        player.soldTo = team.email;
+        team.purseRemaining = team.purseRemaining - this.state.bidAmount;
+        //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
+        const url = "http://localhost:8080"
+        if (!team.playersTaken.includes(player.name)) {
+            team.playersTaken.push(player.email)
+            //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
+            const url = "http://localhost:8080"
+            axios.put(url + '/players/update/' + player.email, player)
+                .then((response) => {
+                    //console.log(response)
+                    if (!response.data.success) {
+                        //alert('Failed');
+                    }
+                    else {
+                        //alert('Success');
+                    }
+                })
+                .catch((error) => {
+                    console.log("Internal Server Error !!")
+                })
+            axios.put(url + '/teams/update/' + team.email, team)
+                .then((response) => {
+                    //console.log(response)
+                    if (!response.data.success) {
+                        //alert('Failed');
+                    }
+                    else {
+                        //alert('Success');
+                    }
+                })
+                .catch((error) => {
+                    console.log("Internal Server Error !!")
+                })
+        }
+        axios.get(url + '/players/' + player.email)
+            .then((response) => {
+                const data = response.data;
+                //console.log(data)
+                if (data[0].soldTo != "None") {
+                    console.log("Player Data", data);
+                    //this.teamUpdated(data);
+                    this.setState({ playerSold: true })
+                    this.setState({ data: data })
+                }
+            })
+            .catch(() => {
+                console.log("Data Not Received");
+            });
+        console.log("retur",this.state.data)
+        return (
+            <div>
+                {this.state.data.length ? this.state.data[0].name + "-" + this.state.data[0].soldTo + "-" + this.state.data[0].baseBidAmount : "Nothing"}
+
+            </div>
+        )
+
+
+
+    }
+
+    /*async AssignToTeam() {
         try {
             const player = this.props.player
-            const team = this.state.selected
+            let team = this.state.selected
 
             player.soldTo = team.email
 
@@ -81,29 +158,19 @@ class Auction extends Component {
             const url = "http://localhost:8080"
             const data1 = await axios.put(url + '/players/update/' + player.email, player)
             const data2 = await axios.put(url + '/teams/update/' + team.email, team)
+            this.setState({team: data2});
 
-            return (
-                <div>
-                    {console.log(data1)} 
-                    {console.log(data2)}
-                    {data1.success ? <div> Player {player.name} Updated</div> : <div> player Update Operation failed</div>}
-                    {data2.success ? <div> Team {team.teamName} Updated</div> : <div> Team Update Operation failed</div>}
-                </div>
-            )
+            {console.log("data",data1,data2)}
+            {data1.data.success ? this.teamUpdated() : this.teamNotUpdated()}
         }catch(error){
-            return(
-                <div>Error found: {error}</div>
-            )
         }
-
-
-    }
+    }*/
 
     heading = (player) => {
         return (
             <div>
                 Welcome to Auction Arena!!
-                    <br /> <br />
+                <br /> <br />
                 <div className='card'>
                     <div className='container'>
                         <h2>Name : {player.name} </h2>
@@ -139,21 +206,20 @@ class Auction extends Component {
         return (
             <div className="center">
                 {this.heading(player)}
-
-                {   this.state.priceFixed ?
-                        this.state.teamFixed ?
+                <div>
+                    {this.state.priceFixed ?
+                        (this.state.teamFixed && !this.state.playerSold) ?
                             this.AssignToTeam()
                             // window.location.href = '/Adminpage'
-                        :   this.teamList()
-                    :   this.soldOption()
-                }
-                
+                            : this.teamList()
+                        : this.soldOption()
+                    }
+                </div>
+
                 {/* {!this.state.priceFixed && !this.state.teamFixed && this.soldOption()}
                 {this.state.priceFixed && !this.state.teamFixed && this.teamList()}
-                {this.state.priceFixed && this.state.teamFixed && this.AssignToTeam()} */}
-
+            {this.state.priceFixed && this.state.teamFixed && this.AssignToTeam()} */}
                 <br />
-                
             </div>
 
         );
