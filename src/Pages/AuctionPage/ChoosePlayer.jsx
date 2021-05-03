@@ -21,7 +21,7 @@ class ChoosePlayer extends Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });
-                console.log("players data Recieved", data);
+                //console.log("players data Recieved", data);
             })
             .catch(() => {
                 console.log("Teams Not Recieved");

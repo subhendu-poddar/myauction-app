@@ -26,7 +26,7 @@ class Auction extends Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
-                console.log("team data Received", data);
+                //console.log("team data Received", data);
             })
             .catch(() => {
                 console.log("Teams Not Received");
@@ -70,14 +70,19 @@ class Auction extends Component {
         this.setState({ bidAmount: newValue })
     }
 
-    teamUpdated = (data) => {
-        console.log("data", data);
-        this.setState({ playerSold: false })
-        return (
-            <div>
-                Hi
-            </div>
-        )
+    teamUpdated = () => {
+        //console.log("data", this.state.data);
+        //this.setState({ playerSold: false })
+        let data = this.state.data[0];
+        if(data.name != undefined)
+        {
+            return (
+                <div>
+                    Player Name : {this.state.data[0].name} <br /> Sold To : {this.state.data[0].soldTo} <br /> 
+                    At {this.state.data[0].baseBidAmount}
+                </div>
+            )
+        }
     }
 
     AssignToTeam = () => {
@@ -124,7 +129,7 @@ class Auction extends Component {
                 const data = response.data;
                 //console.log(data)
                 if (data[0].soldTo != "None") {
-                    console.log("Player Data", data);
+                    //console.log("Player Data", data);
                     //this.teamUpdated(data);
                     this.setState({ playerSold: true })
                     this.setState({ data: data })
@@ -133,15 +138,6 @@ class Auction extends Component {
             .catch(() => {
                 console.log("Data Not Received");
             });
-        console.log("retur",this.state.data)
-        return (
-            <div>
-                {this.state.data.length ? this.state.data[0].name + "-" + this.state.data[0].soldTo + "-" + this.state.data[0].baseBidAmount : "Nothing"}
-
-            </div>
-        )
-
-
 
     }
 
@@ -170,7 +166,7 @@ class Auction extends Component {
         return (
             <div>
                 Welcome to Auction Arena!!
-                <br /> <br />
+                <br />
                 <div className='card'>
                     <div className='container'>
                         <h2>Name : {player.name} </h2>
@@ -189,7 +185,7 @@ class Auction extends Component {
                 <h1 className="counter">{this.state.bidAmount}</h1>     <br />
                 <button onClick={this.inc} className="btn1"><h1>+</h1></button>
                 <button onClick={this.dec} className="btn2"><h3>-</h3></button>
-                <br /> <br />
+                <br/>
 
                 <button className='submit_btn'
                     onClick={() =>
@@ -215,6 +211,8 @@ class Auction extends Component {
                         : this.soldOption()
                     }
                 </div>
+
+                <div>{this.teamUpdated()}</div>
 
                 {/* {!this.state.priceFixed && !this.state.teamFixed && this.soldOption()}
                 {this.state.priceFixed && !this.state.teamFixed && this.teamList()}
