@@ -20,6 +20,9 @@ const signupTemplate = new mongoose.Schema({
     soldTo: {
         type: String
     },
+    bidAmount: {
+        type: Number
+    },    
     date: {
         type: Date,
         default: Date.now()

@@ -13,7 +13,8 @@ class PlayersRegistration extends Component {
             soldTo: "None",
             password: '',
             c_password: '',
-            baseBidAmount: ''
+            baseBidAmount: '',
+            bidAmount : ''
         }
     }
     submit = (evt) => {

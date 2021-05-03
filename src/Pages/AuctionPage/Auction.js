@@ -78,8 +78,8 @@ class Auction extends Component {
         {
             return (
                 <div>
-                    Player Name : {this.state.data[0].name} <br /> Sold To : {this.state.data[0].soldTo} <br /> 
-                    At {this.state.data[0].baseBidAmount}
+                    Player Name : {data.name} <br /> Sold To : {data.soldTo} <br /> 
+                    At {this.state.bidAmount}
                 </div>
             )
         }
@@ -90,6 +90,7 @@ class Auction extends Component {
         //console.log("player",player);
         let team = this.state.selected;
         player.soldTo = team.email;
+        player.bidAmount = this.state.bidAmount;
         team.purseRemaining = team.purseRemaining - this.state.bidAmount;
         //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
         const url = "http://localhost:8080"
