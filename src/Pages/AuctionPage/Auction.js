@@ -71,7 +71,7 @@ class Auction extends Component {
     }
 
     teamUpdated = () => {
-        //console.log("data", this.state.data);
+        console.log("data", this.state.data);
         //this.setState({ playerSold: false })
         let data = this.state.data[0];
         if(data.name != undefined)
@@ -89,7 +89,7 @@ class Auction extends Component {
         const player = this.props.player;
         //console.log("player",player);
         let team = this.state.selected;
-        player.soldTo = team.email;
+        player.soldTo = team.teamName;
         player.bidAmount = this.state.bidAmount;
         team.purseRemaining = team.purseRemaining - this.state.bidAmount;
         //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
