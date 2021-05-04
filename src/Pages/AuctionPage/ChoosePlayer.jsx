@@ -62,7 +62,7 @@ class ChoosePlayer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="center">
                 {this.displayPlayers(this.state.players)}
                 {/* {console.log(this.state.selected)} */}
                 {this.state.clicked && 

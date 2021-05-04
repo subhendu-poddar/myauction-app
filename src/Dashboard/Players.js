@@ -16,7 +16,7 @@ class player extends Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });
-                console.log("players data Recieved", data);
+                //console.log("players data Recieved", data);
             })
             .catch(() => {
                 console.log("Teams Not Recieved");
@@ -27,8 +27,8 @@ class player extends Component {
         if (!players.length) return null;
 
         return players.map((player, index) => (
-            <div key={index}>
-                <h4>Player-{player.name} :: Base_Bid_Amount-{player.baseBidAmount} </h4>
+            <div key={index} className="center">
+                <h3>Name-{player.name}</h3><h4> Sold To - {player.soldTo}</h4>
             </div>
         ))
     }

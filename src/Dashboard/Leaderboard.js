@@ -17,7 +17,7 @@ class Leaderboard extends Component {
         .then((response) =>{
             const data = response.data;
             this.setState({teams : data});
-            console.log("Teams Recieved",data);
+            //console.log("Teams Recieved",data);
         })
         .catch(()=>{
             console.log("Teams Not Recieved");
@@ -28,15 +28,21 @@ class Leaderboard extends Component {
         if(!teams.length)  return null;
 
         return teams.map((team,index) =>(
-            <div key = {index}>
-                <h3>Team-{team.teamName} :: playersTaken- {team.playersTaken} :: purse - {team.purseRemaining}</h3>
-            </div>
+            <table>
+                <tbody>
+            <tr key = {index}>
+                    <th>{team.teamName}</th>
+                    <th>{team.playersTaken}</th>
+                    <th>{team.purseRemaining}</th>
+            </tr>
+            </tbody>
+            </table>
         ))
     }
 
     render(){
         return(
-            <div>
+            <div className="center">
                 Leaderboard<br/>
                 ----------------------------------------------------------------
                 

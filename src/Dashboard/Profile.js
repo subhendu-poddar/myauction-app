@@ -21,7 +21,7 @@ class Profile extends Component {
         .then((response) =>{
             const data = response.data;
             this.setState({team : data});
-            console.log("Team Recieved",data);
+            //console.log("Team Recieved",data);
         })
         .catch(()=>{
             console.log("Team Not Recieved");

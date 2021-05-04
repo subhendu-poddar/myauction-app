@@ -71,7 +71,7 @@ class Auction extends Component {
     }
 
     teamUpdated = () => {
-        console.log("data", this.state.data);
+        //console.log("data", this.state.data);
         //this.setState({ playerSold: false })
         let data = this.state.data[0];
         if(data.name != undefined)
@@ -95,7 +95,7 @@ class Auction extends Component {
         //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
         const url = "http://localhost:8080"
         if (!team.playersTaken.includes(player.name)) {
-            team.playersTaken.push(player.email)
+            team.playersTaken.push(player.name)
             //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
             const url = "http://localhost:8080"
             axios.put(url + '/players/update/' + player.email, player)
