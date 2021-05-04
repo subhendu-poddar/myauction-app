@@ -27,17 +27,21 @@ class player extends Component {
         if (!players.length) return null;
 
         return players.map((player, index) => (
-            <div key={index} className="center">
-                <h3>Name-{player.name}</h3><h4> Sold To - {player.soldTo}</h4>
-            </div>
+            <table>
+                <thead>
+                    <tr key={index}>
+                        <th>{player.name}</th>
+                        <th>{player.soldTo}</th>
+                    </tr>
+                </thead>
+            </table>
         ))
     }
 
     render() {
         return (
-            <div>
-                Players<br />
-                ----------------------------------------------------------------
+            <div className='center'>
+                <br /> <h3>Players Details</h3> <br />
 
                 {this.displayPlayers(this.state.players)}
             </div>

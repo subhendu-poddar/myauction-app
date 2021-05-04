@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Auction from './Auction';
+import './style.css'
 
 class ChoosePlayer extends Component {
     constructor(){
@@ -39,21 +40,23 @@ class ChoosePlayer extends Component {
         if (!players.length) return null;
 
         return (
-            <div>
-                Choose players <br/>
-                ------------------------
+            <div className='center'>
+                <br/>
+                <h2>Choose a player!</h2><br />
                 {players.map((player, index) => (
-                    <div key={index}>
-                        {player.soldTo==="None" &&
-                        <button onClick={() => 
-                            this.setState({ 
-                                selected: player, 
-                                clicked: true, 
-                                players: []
-                            }) 
-                        }> 
-                        {player.name}
-                        </button>}
+                    <div className='inline'>
+                        <div key={index}>
+                            {player.soldTo==="None" &&
+                            <button className='player_btn' onClick={() => 
+                                this.setState({ 
+                                    selected: player, 
+                                    clicked: true, 
+                                    players: []
+                                }) 
+                            }> 
+                            {player.name}
+                            </button>}
+                        </div>
                     </div>
                 ))}
             </div>

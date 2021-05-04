@@ -40,7 +40,7 @@ class Auction extends Component {
         return (
             <div>
                 {teams.map((team, index) => (
-                    <div key={index} className="team_btn">
+                    <div key={index}>
                         <button className="team_btn"
                             onClick={() =>
                                 this.setState({
@@ -77,9 +77,11 @@ class Auction extends Component {
         if(data.name != undefined)
         {
             return (
-                <div>
+                <div className='card'>
+                    <div className='container'>
                     Player Name : {data.name} <br /> Sold To : {data.soldTo} <br /> 
-                    At {this.state.bidAmount}
+                    Bid Amount : {this.state.bidAmount}
+                    </div>
                 </div>
             )
         }
@@ -165,8 +167,8 @@ class Auction extends Component {
 
     heading = (player) => {
         return (
-            <div>
-                Welcome to Auction Arena!!
+            <div className='center'>
+                <h1>Welcome to Auction Arena!</h1>
                 <br />
                 <div className='card'>
                     <div className='container'>
@@ -186,7 +188,7 @@ class Auction extends Component {
                 <h1 className="counter">{this.state.bidAmount}</h1>     <br />
                 <button onClick={this.inc} className="btn1"><h1>+</h1></button>
                 <button onClick={this.dec} className="btn2"><h3>-</h3></button>
-                <br/>
+                <br/><br/>
 
                 <button className='submit_btn'
                     onClick={() =>

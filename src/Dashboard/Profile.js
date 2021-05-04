@@ -32,20 +32,20 @@ class Profile extends Component {
         if(!team.length)  return null;
 
         return team.map((each,index) =>(
-            <div key = {index}>
-                <h3>Team - {each.teamName}</h3>
+            <div className='center' key = {index}>
+                <h2>Team - {each.teamName}</h2>
                 <h3>Manager - {each.manager}</h3>
-                <h2>Players Taken - {each.playersTaken}</h2>
-                <h2>Purse Amount Remaining -{each.purseRemaining}</h2>
+                <h3>Players Taken - {each.playersTaken}</h3>
+                <h3>Purse Amount Remaining -{each.purseRemaining}</h3>
             </div>
         ))
     }
     render() {
         
         return (
-            <div>
-                Welcome to Profile!!
-                <h1/>
+            <div className='center'>
+                <br/><h1>Welcome to Profile!</h1><br/>
+                
                 {this.displayTeam(this.state.team)}
             </div>
             

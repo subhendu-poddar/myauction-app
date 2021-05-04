@@ -1,0 +1,30 @@
+.player_btn{
+    border: solid 1px;
+    background: #404040;
+    color: #ffffff !important;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    height: 60px;
+    width: 150px;
+    outline: none;
+    padding-bottom: 2px;
+    }
+.player_btn:hover {
+        color: #404040 !important;
+        font-weight: 10 !important;
+        letter-spacing: 1px;
+        background: none;
+        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        transition: all 0.3s ease 0s;
+        }
+.inline{
+    float:left;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
