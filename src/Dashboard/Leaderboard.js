@@ -23,6 +23,13 @@ class Leaderboard extends Component {
                 console.log("Teams Not Recieved");
             });
     }
+    showplayers = (team) => {
+        return team.playersTaken.map((player, index) => (
+            <div key={index}>
+                {player}
+            </div>
+        ))
+    }
 
     displayTeams = (teams) => {
         if (!teams.length) return null;
@@ -32,7 +39,7 @@ class Leaderboard extends Component {
                 <tbody>
                     <tr key={index}>
                         <th>{team.teamName}</th>
-                        <th>{team.playersTaken}</th>
+                        <th>{this.showplayers(team)}</th>
                         <th>{team.purseRemaining}</th>
                     </tr>
                 </tbody>
