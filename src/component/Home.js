@@ -5,11 +5,13 @@ import NavMenu from './NavMenu';
 
 class Home extends Component {
     render() {
-        var loggedin = JSON.parse(localStorage.getItem('team'));
+        var teamLoggedin = JSON.parse(localStorage.getItem('team'));
+        var AdminLoggedin = JSON.parse(localStorage.getItem('admin'));
         return (
             <div>
-                { !loggedin && <Redirect to='/login' /> }
-                { loggedin && <Dashboard /> }
+                { AdminLoggedin && <Redirect to='/AdminPage'/> }
+                { teamLoggedin && <Dashboard />}
+                { !teamLoggedin && <Redirect to='/login' /> }
             </div>
         );
     }

@@ -66,6 +66,7 @@ class Auction extends Component {
     }
     dec = () => {
         let value = this.state.bidAmount
+        if (value <= this.props.player.baseBidAmount) return;
         let newValue = value - (value <= 0 ? value : value <= 1000 ? 100 : value <= 2000 ? 200 : 500)
         this.setState({ bidAmount: newValue })
     }
@@ -74,7 +75,7 @@ class Auction extends Component {
         //console.log("data", this.state.data);
         //this.setState({ playerSold: false })
         let data = this.state.data[0];
-        if(data.name != undefined)
+        if(data.name !== undefined)
         {
             return (
                 <div className='card'>
@@ -98,6 +99,7 @@ class Auction extends Component {
         const url = "http://localhost:8080"
         if (!team.playersTaken.includes(player.name)) {
             team.playersTaken.push(player.name)
+            // console.log(player)
             //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
             const url = "http://localhost:8080"
             axios.put(url + '/players/update/' + player.email, player)
@@ -131,7 +133,7 @@ class Auction extends Component {
             .then((response) => {
                 const data = response.data;
                 //console.log(data)
-                if (data[0].soldTo != "None") {
+                if (data[0].soldTo !=="None") {
                     //console.log("Player Data", data);
                     //this.teamUpdated(data);
                     this.setState({ playerSold: true })

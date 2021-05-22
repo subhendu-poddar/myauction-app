@@ -1,0 +1,119 @@
+.head {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-size: xx-large;
+  color: #ce2828;
+  font-weight: bold;
+}
+
+#scrims-ladder--container {
+    padding:50px;
+}
+.ladder-nav {
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    background:#4694dd;
+    padding:10px 25px;
+    border-radius:10px;
+    margin: 20px;
+    border:1px solid #686EF9;
+    font-size: 1.1rem;
+}
+.ladder-result {
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    padding:10px 25px;
+    background:#f1e365;
+    border-radius:10px;
+    margin: 20px;
+    border:1px solid #ce654b;
+    font-size: 1.1rem;
+}
+.ladder-title {
+    flex:2;
+}
+.ladder-nav--col:nth-child(n+2) {
+    flex:1;
+}
+.ladder-nav h1 {
+    margin-bottom:0px;
+    line-height:1;
+}
+.ladder-nav h1, .bracket-title {
+    font-size:20px;
+    color:#888DFF!important;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+.bracket-title ul, .bracket-title li {
+    display:inline;
+}
+/* Results Nav */
+.ladder-nav--results, .ladder-nav--results-players {
+    display:flex;
+    flex-wrap:wrap;
+    padding:15px 25px;
+}
+.ladder-nav--results label {
+    color:#747474;
+    font-size:18px;
+    font-weight:bold;
+}
+.ladder-nav--results-col, .results-col {
+    flex:1;
+}
+.ladder-nav--results {
+    margin:5px 0px;
+}
+.ladder-nav--results-players {
+    background:#1d1d1d;
+    border-radius:10px;
+    margin:5px 0px;
+    align-items:center;
+}
+.scrims-ladder .ladder-nav--results-players:nth-of-type(1) {
+    color:#686EF9;
+}
+.results-col {
+    font-size:18px;
+    color:#747474;
+    font-weight:light;
+}
+.results-rank {
+    display:block;
+    background:#686EF9;
+    color:white!important;
+    font-weight:bold;
+    width:34px;
+    height:34px;
+    text-align:center;
+    border-radius:50%;
+}
+.positions {
+    vertical-align:middle;
+}
+.ladder-nav--results-players:hover {
+    background:#1A1A1A;
+}
+.ladder-nav input[type=text]:focus {
+    border:1px solid #888DFF;
+}
+.ladder-search {
+    background:#5E64F1;
+    color:white!important;
+}
+.ladder-search::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #888DFF;
+}
+.ladder-search::-moz-placeholder { /* Firefox 19+ */
+    color: #888DFF;
+}
+.ladder-search:-ms-input-placeholder { /* IE 10+ */
+    color: #888DFF;
+}
+.ladder-search:-moz-placeholder { /* Firefox 18- */
+    color: #888DFF;
+}

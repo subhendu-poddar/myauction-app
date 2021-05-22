@@ -23,11 +23,9 @@ class Leaderboard extends Component {
                 console.log("Teams Not Recieved");
             });
     }
-    showplayers = (team) => {
-        return team.playersTaken.map((player, index) => (
-            <div key={index}>
-                {player}
-            </div>
+    showplayers = (players) => {
+        return players.map((player) => (
+            <li> {player} </li>
         ))
     }
 
@@ -35,31 +33,36 @@ class Leaderboard extends Component {
         if (!teams.length) return null;
 
         return teams.map((team, index) => (
-            <table>
-                <tbody>
-                    <tr key={index}>
-                        <th>{team.teamName}</th>
-                        <th>{this.showplayers(team)}</th>
-                        <th>{team.purseRemaining}</th>
-                    </tr>
-                </tbody>
-            </table>
+            <div className="scrims-ladder--container" key={index}>
+                <div className="ladder-result">
+                    <div className="ladder-nav--results-col"> {team.teamName} </div>
+                    <div className="ladder-nav--results-col"> {team.purseRemaining} </div>
+                    <div className="ladder-nav--results-col"> {this.showplayers(team.playersTaken)} </div>
+                </div>
+            </div>
         ))
     }
 
     render() {
         return (
-            <div className="center">
-                <br /> <h3>Leaderboard</h3> <br />
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Team Name</th>
-                            <th>Players Taken</th>
-                            <th>Purse Remaining</th>
-                        </tr>
-                    </tbody>
-                </table>
+            <div>
+                <br/>
+                <div className="head"> Leaderboard </div> <br/> <br/>
+
+                <div className="scrims-ladder--container">
+                    <div className="ladder-nav">
+                        <div className="ladder-nav--results-col">
+                            <label> Team Name </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Purse Remaining </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Players Taken </label>
+                        </div>
+                    </div>
+                </div>
+
                 <br/>
                 {this.displayTeams(this.state.teams)}
             </div>

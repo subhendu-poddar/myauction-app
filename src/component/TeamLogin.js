@@ -27,7 +27,7 @@ class Login extends Component {
                 //console.log(response)
                 if (!response.data.success) {
                     alert('Invalid Email or Password !!')
-                    this.resetState()
+                    // this.resetState()
                 }
                 else {
                     localStorage.setItem('team', response.config.data)
@@ -56,7 +56,7 @@ class Login extends Component {
         return (
            
             <form className='form'>
-                <div className='form-label'>Login Page</div>
+                <div className='form-label'>Team Login Page</div>
                 <br />
                 <Protected/>
                 <br />

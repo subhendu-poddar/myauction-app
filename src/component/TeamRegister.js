@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import Protected from "./Protected"
 import axios from 'axios'
 
-var defaultAmount = 20000;
+var defaultAmount = 50000;
 class Register extends Component {
     constructor(){
         super()
@@ -67,7 +67,7 @@ class Register extends Component {
     render() {
         return (
             <div className='form'>
-                <div className='form-label'>Registration Page</div>
+                <div className='form-label'>Team Registration Page</div>
                 <br />
                 <Protected/>
                 <br />

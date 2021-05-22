@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './component/Home'
-import Login from './component/Login'
+import Login from './component/TeamLogin'
 import NavMenu from './component/NavMenu'
-import Register from './component/Register'
+import Register from './component/TeamRegister'
 import PlayersRegistration from './component/PlayersRegistration'
 import Protected from './component/Protected'
 import Admin from './component/Admin'
@@ -20,14 +20,14 @@ function App() {
         <NavMenu/>
 
         <Switch>
-          <Route path='/home'> <Home/> </Route>
-          <Route path='/register'> <Register/> </Route>
-          <Route path='/login'> <Login/> </Route>
-          <Route path='/players-registration'> <PlayersRegistration/> </Route>
-          <Route path='/admin/signin'> <Admin/> </Route>
-          <Route path='/AdminPage'> <AdminPage/> </Route>
-          <Route path='/TeamPage'> <TeamPage/> </Route>
-          <Route path='/'> <Home/> </Route>
+          <Route exact path='/home'> <Home/> </Route>
+          <Route exact path='/register'> <Register/> </Route>
+          <Route exact path='/login'> <Login /> </Route>
+          <Route exact path='/AdminPage'> <AdminPage /> </Route>
+          <Route exact path='/players-registration'> <PlayersRegistration/> </Route>
+          <Route exact path='/admin/signin'> <Admin/> </Route>
+          <Route exact path='/TeamPage'> <TeamPage/> </Route>
+          <Route exact path='/'> <Home/> </Route>
           
         </Switch>
 

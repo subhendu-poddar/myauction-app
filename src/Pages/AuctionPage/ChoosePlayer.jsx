@@ -41,24 +41,29 @@ class ChoosePlayer extends Component {
 
         return (
             <div className='center'>
-                <br/>
-                <h2>Choose a player!</h2><br />
-                {players.map((player, index) => (
-                    <div className='inline'>
-                        <div key={index}>
-                            {player.soldTo==="None" &&
-                            <button className='player_btn' onClick={() => 
-                                this.setState({ 
-                                    selected: player, 
-                                    clicked: true, 
-                                    players: []
-                                }) 
-                            }> 
-                            {player.name}
-                            </button>}
+                <br/> <div className="head"> Choose a player! </div>
+                <div>
+                    <br /> <br />
+                    {players.map((player, index) => (
+                        <div className='inline' key={index}>
+                            <div>
+                                {player.soldTo === "None" &&
+                                    <button className='player_btn' onClick={() =>
+                                        this.setState({
+                                            selected: player,
+                                            clicked: true,
+                                            players: []
+                                        })
+                                    }>
+                                        <div className="playerName">{player.name}</div>
+                                        <br />
+                                        Base Bid Amount = {player.baseBidAmount}
+                                    </button>}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+                
             </div>
         )
     }
