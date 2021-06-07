@@ -37,10 +37,16 @@ class Profile extends Component {
 
         return team.map((each,index) =>(
             <div className='center' key = {index}>
-                <h2>Team - {each.teamName}</h2>
-                <h3>Manager - {each.manager}</h3>
-                <h3>Players Taken - <div> {(each.playersTaken)} </div> </h3>
-                <h3>Purse Amount Remaining -{each.purseRemaining}</h3>
+                <div className="ladder-nav">
+                    <div className="navStrong">
+                        Team - <strong> {each.teamName} </strong> <br />
+                        Manager - <strong> {each.manager} </strong> <br />
+                        Purse Amount Remaining - <strong> {each.purseRemaining} </strong> <br />
+                        Players Taken - <strong> { (each.playersTaken) } </strong> <br />
+                    </div>
+                    
+                </div>
+                
             </div>
         ))
     }
@@ -48,7 +54,9 @@ class Profile extends Component {
         
         return (
             <div className='center'>
-                <br/><h1>Welcome to Profile!</h1><br/>
+                <br/>
+                <div className="head"> Welcome to Profile! </div>
+                <br/>
                 
                 {this.displayTeam(this.state.team)}
             </div>

@@ -78,10 +78,11 @@ class Auction extends Component {
         if(data.name !== undefined)
         {
             return (
-                <div className='card'>
-                    <div className='container'>
-                    Player Name : {data.name} <br /> Sold To : {data.soldTo} <br /> 
-                    Bid Amount : {this.state.bidAmount}
+                <div className='cardBlink'>
+                    <div /* className='container' */>
+                        Player Name : <strong> {data.name} </strong> <br />
+                        Sold To : <strong> {data.soldTo} </strong> <br />
+                        Bid Amount : <strong> {this.state.bidAmount} </strong>
                     </div>
                 </div>
             )
@@ -170,12 +171,13 @@ class Auction extends Component {
     heading = (player) => {
         return (
             <div className='center'>
-                <h1>Welcome to Auction Arena!</h1>
+                <br/>
+                <div className="head">Welcome to Auction Arena!</div>
                 <br />
-                <div className='card'>
-                    <div className='container'>
-                        <h2>Name : {player.name} </h2>
-                        <h3>Base Amount : {player.baseBidAmount} </h3>
+                <div >
+                    <div className='card'>
+                        Name : {player.name} <br/>
+                        Base Amount : {player.baseBidAmount} 
                     </div>
                 </div>
                 <br />

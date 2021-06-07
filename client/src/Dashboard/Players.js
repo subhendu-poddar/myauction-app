@@ -27,24 +27,43 @@ class player extends Component {
         if (!players.length) return null;
 
         return players.map((player, index) => (
-            <div key={index}>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>{player.name}</th>
-                            <th>{player.soldTo}</th>
-                        </tr>
-                    </thead>
-                </table>
+            <div className="scrims-ladder--container" key={index}>
+                <div className="ladder-result">
+                    <div className="ladder-nav--results-col"> {player.name} </div>
+                    <div className="ladder-nav--results-col"> {player.baseBidAmount} </div>
+                    <div className="ladder-nav--results-col"> {player.bidAmount === 0 ? "-" : player.bidAmount} </div>
+                    <div className="ladder-nav--results-col"> {player.soldTo === "None" ? "-" : player.soldTo} </div>
+                    <div className="ladder-nav--results-col"> {player.email} </div>
+                </div>
             </div>
-            
         ))
     }
 
     render() {
         return (
-            <div className='center'>
-                <br /> <h3>Players Details</h3> <br />
+            <div>
+                <br/>
+                <div className="head"> Players </div> <br/> <br/>
+
+                <div className="scrims-ladder--container">
+                    <div className="ladder-nav">
+                        <div className="ladder-nav--results-col">
+                            <label> Player Name </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Base Bid Amount </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Amount Sold </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Player's Team </label>
+                        </div>
+                        <div className="ladder-nav--results-col">
+                            <label> Email Id </label>
+                        </div>
+                    </div>
+                </div>
 
                 {this.displayPlayers(this.state.players)}
             </div>

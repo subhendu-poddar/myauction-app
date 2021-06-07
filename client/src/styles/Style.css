@@ -29,12 +29,12 @@ body{
     outline: none;
 }
 .btn1:hover{
-    background-color: #008CBA;
+    background-color: #22f11b;
     color: white;
     cursor: pointer;   
 }
 .btn1:active{
-    background-color: #008CBA;
+    background-color: #22f11b;
     color: white;
     cursor: grabbing;
 }
@@ -50,33 +50,34 @@ body{
     text-align: center;
 }
 .btn2:hover{
-    background-color: #f44336;
+    background-color: #fc3325;
     color: white;
     cursor: pointer;   
 }
 .btn2:active{
-    background-color: #f44336;
+    background-color: #f02d1f;
     color: white;
     cursor: grabbing;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     height: 75px;
     width: 500px;
     margin: auto;
     border: 1px black solid;
+    background-color: rgb(69, 165, 189);
+    font-size: x-large;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
   }
   
   .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(99, 240, 86, 0.2);
   }
   .container {
     padding: 2px 16px;
@@ -89,6 +90,7 @@ body{
     height: 50px;
     padding-top: 10px;
     text-align: center;
+    background-color: rgb(190, 245, 38);
     margin: auto;
     border: 1px black solid;
   }
@@ -105,6 +107,26 @@ body{
   }
   .submit_btn, .team_btn {
     border: none;
+    background: #d3fa28;
+    color: #404040 !important;
+    border-radius: 6px;
+    transition: all 0.3s ease 0s;
+    height: 60px;
+    width: 200px;
+    outline: none;
+    cursor: pointer;
+  }
+  .submit_btn:hover,.team_btn:hover {
+    color: #0e0d0d !important;
+    font-weight: 10 !important;
+    letter-spacing: 1px;
+    background: #7cfa28;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
+  }
+  .team_btn {
+    border: none;
     background: #404040;
     color: #ffffff !important;
     border-radius: 6px;
@@ -112,30 +134,56 @@ body{
     height: 60px;
     width: 200px;
     outline: none;
-    }
-    .submit_btn:hover,.team_btn:hover {
-        color: #404040 !important;
-        font-weight: 10 !important;
-        letter-spacing: 1px;
-        background: none;
-        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-        transition: all 0.3s ease 0s;
-        }
-        .team_btn {
-          border: none;
-          background: #404040;
-          color: #ffffff !important;
-          border-radius: 6px;
-          transition: all 0.3s ease 0s;
-          height: 60px;
-          width: 200px;
-          outline: none;
-          margin-right: 5px;
-          margin-bottom: 5px;
-          }
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
 
 tr,th{
   border: 0.01em solid black;
   padding: 10px;
+}
+
+
+.cardBlink {
+  background-color: #004A7F;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial;
+  font-size: 24px;
+  padding: 12px 40px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px;
+  margin: auto;
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #00b200; -webkit-box-shadow: 0 0 3px #00B200; }
+  50% { background-color: #00FF00; -webkit-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00B200; -webkit-box-shadow: 0 0 3px #00B200; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #00b200; -webkit-box-shadow: 0 0 3px #00B200; }
+  50% { background-color: #00FF00; -webkit-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00B200; -webkit-box-shadow: 0 0 3px #00B200; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #00b200; -webkit-box-shadow: 0 0 3px #00B200; }
+  50% { background-color: #00FF00; -webkit-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00B200; -webkit-box-shadow: 0 0 3px #00B200; }
+}
+
+@keyframes glowing {
+  0% { background-color: #00b200; -webkit-box-shadow: 0 0 3px #00B200; }
+  50% { background-color: #00FF00; -webkit-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00B200; -webkit-box-shadow: 0 0 3px #00B200; }
 }
