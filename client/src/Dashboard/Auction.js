@@ -47,7 +47,7 @@ class Auction extends Component {
             console.log(team);
             let bidAmt = this.state.count;
             console.log(bidAmt);
-            axios.get('http://localhost:8080/teams/'+ team)
+            axios.get('http://localhost:8080/team/'+ team)
                 .then((response) => {
                     let data = response.data;
                     this.setState({ sold_team : data });

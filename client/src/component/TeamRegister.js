@@ -31,7 +31,7 @@ class Register extends Component {
         const registered = this.state
         delete registered.c_password
 
-        axios.post('http://localhost:8080/team-signup', registered)
+        axios.post('http://localhost:8080/team/signup', registered)
             .then((response) =>{
                 console.log(response)
                 if(!response.data.success){

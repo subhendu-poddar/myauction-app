@@ -12,7 +12,7 @@ class player extends Component {
     }
 
     getPlayers = () => {
-        axios.get('http://localhost:8080/players/')
+        axios.get('http://localhost:8080/player/getAllPlayers')
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });
@@ -27,14 +27,17 @@ class player extends Component {
         if (!players.length) return null;
 
         return players.map((player, index) => (
-            <table>
-                <thead>
-                    <tr key={index}>
-                        <th>{player.name}</th>
-                        <th>{player.soldTo}</th>
-                    </tr>
-                </thead>
-            </table>
+            <div key={index}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{player.name}</th>
+                            <th>{player.soldTo}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            
         ))
     }
 

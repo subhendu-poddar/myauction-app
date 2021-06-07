@@ -13,7 +13,7 @@ class Leaderboard extends Component {
     }
 
     getTeams = () => {
-        axios.get('http://localhost:8080/teams/')
+        axios.get('http://localhost:8080/team/getAllTeams')
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
@@ -24,8 +24,10 @@ class Leaderboard extends Component {
             });
     }
     showplayers = (players) => {
-        return players.map((player) => (
-            <li> {player} </li>
+        return players.map((player,index1) => (
+            <div key={index1}>
+                {player}
+            </div>
         ))
     }
 
@@ -63,7 +65,7 @@ class Leaderboard extends Component {
                     </div>
                 </div>
 
-                <br/>
+                {/* <br/> */}
                 {this.displayTeams(this.state.teams)}
             </div>
         );

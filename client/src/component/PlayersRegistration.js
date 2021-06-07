@@ -10,11 +10,9 @@ class PlayersRegistration extends Component {
         this.state = {
             name: '',
             email: '',
-            soldTo: "None",
             password: '',
             c_password: '',
-            baseBidAmount: '',
-            bidAmount : ''
+            baseBidAmount: ''
         }
     }
     submit = (evt) => {
@@ -30,12 +28,12 @@ class PlayersRegistration extends Component {
         const registered = this.state
         delete registered.c_password
 
-        axios.post('http://localhost:8080/player-signup', registered)
+        axios.post('http://localhost:8080/player/signup', registered)
             .then((response) => {
                 console.log(response)
                 if (!response.data.success) {
                     alert('Player with this Email Id already Exists!!')
-                    this.resetState()
+                    // this.resetState()
                 }
                 else {
                     localStorage.setItem('player', response.config.data)

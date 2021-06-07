@@ -22,7 +22,7 @@ class Auction extends Component {
     }
 
     getTeams = () => {
-        axios.get('http://localhost:8080/teams/')
+        axios.get('http://localhost:8080/team/getAllTeams')
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
@@ -97,12 +97,12 @@ class Auction extends Component {
         team.purseRemaining = team.purseRemaining - this.state.bidAmount;
         //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
         const url = "http://localhost:8080"
-        if (!team.playersTaken.includes(player.name)) {
-            team.playersTaken.push(player.name)
+        if (!team.playersTaken.includes(player.email)) {
+            team.playersTaken.push(player.email)
             // console.log(player)
             //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
-            const url = "http://localhost:8080"
-            axios.put(url + '/players/update/' + player.email, player)
+            // const url = "http://localhost:8080"
+            axios.put(url + '/player/update/' + player.email, player)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -115,7 +115,7 @@ class Auction extends Component {
                 .catch((error) => {
                     console.log("Internal Server Error !!")
                 })
-            axios.put(url + '/teams/update/' + team.email, team)
+            axios.put(url + '/team/update/' + team.email, team)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -129,7 +129,7 @@ class Auction extends Component {
                     console.log("Internal Server Error !!")
                 })
         }
-        axios.get(url + '/players/' + player.email)
+        axios.get(url + '/player/' + player.email)
             .then((response) => {
                 const data = response.data;
                 //console.log(data)

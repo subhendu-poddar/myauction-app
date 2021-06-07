@@ -50,7 +50,7 @@ class Admin extends Component {
     return (
 
       <form className='form'>
-        <div className='form-label'>Admin Login</div>
+        <div className='form-label'>Admin Login Page</div>
         <br />
         <input
           className='form-input'

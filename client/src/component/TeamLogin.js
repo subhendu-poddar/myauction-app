@@ -22,7 +22,7 @@ class Login extends Component {
         evt.preventDefault()
         const user = this.state
 
-        axios.post('http://localhost:8080/team-signin', user)
+        axios.post('http://localhost:8080/team/signin', user)
             .then((response) => {
                 //console.log(response)
                 if (!response.data.success) {
