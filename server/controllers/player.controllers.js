@@ -1,4 +1,5 @@
-const Player = require('../Models/player')
+const Player = require('../Models/player');
+const bcrypt = require('bcryptjs');
 
 exports.signup = (req, res) => {
     Player.find({

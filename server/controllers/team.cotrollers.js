@@ -1,4 +1,5 @@
 const Team = require('../Models/team');
+const bcrypt = require('bcryptjs');
 
 exports.signup = (req, res) => {
     Team.find({

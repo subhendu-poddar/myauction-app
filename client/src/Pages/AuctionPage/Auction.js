@@ -22,7 +22,7 @@ class Auction extends Component {
     }
 
     getTeams = () => {
-        axios.get('http://localhost:8080/team/getAllTeams')
+        axios.get('http://localhost:8080/team/allTeams')
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });

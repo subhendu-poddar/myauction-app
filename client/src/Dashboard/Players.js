@@ -12,7 +12,7 @@ class player extends Component {
     }
 
     getPlayers = () => {
-        axios.get('http://localhost:8080/player/getAllPlayers')
+        axios.get('http://localhost:8080/player/allPlayers')
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });
