@@ -17,6 +17,7 @@ exports.signup = (req, res) => {
             })
         }
         else {
+            req.body.password = bcrypt.hashSync(req.body.password);
             const signedUpUser = new Team(req.body)
             signedUpUser.save((error) => {
                 if (error) {
@@ -34,30 +35,35 @@ exports.signup = (req, res) => {
     })
 }
 
-exports.signin = (req, res) => {
-    Team.find({
-        email: req.body.email,
-        password: req.body.password
-    }, (error, previousUser) => {
-        if (error) {
-            return res.send({
+exports.signin = async (req, res) => {
+    try {
+        const user = await Team.findOne({
+            email: req.body.email
+        })
+        if (!user) {
+            res.send({
                 success: false,
-                message: 'Server error !!'
+                message: "email doesn't exist"
             })
         }
-        else if (previousUser.length != 1) {
-            return res.send({
-                success: false,
-                message: 'Invalid Email or Password !!'
-            })
-        }
-        else {
-            return res.send({
+        const { email, password } = user
+        const valid = bcrypt.compareSync(req.body.password, user.password);
+        if (valid) {
+            res.send({
                 success: true,
                 message: 'signin successful !!'
             })
         }
-    })
+        else {
+            res.send({
+                success: false,
+                message: 'Invalid Credentials !!'
+            })
+        }
+
+    } catch (err) {
+        res.status(400)
+    }
 }
 
 exports.getAllTeams = (req, res) => {
@@ -119,4 +125,21 @@ exports.updateTeam = async (req, res) => {
     } catch (error) {
         res.status(400)
     }
+}
+
+exports.deleteAll = async(req, res) => {
+    Team.deleteMany()
+        .then(err => {
+            res.status(200).send({
+                message:
+                    "All Teams successfully deleted."
+            })
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    "Internal Server Error.",
+                description: err
+            })
+        })
 }
