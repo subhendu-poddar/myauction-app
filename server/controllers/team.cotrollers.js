@@ -1,4 +1,5 @@
 const Team = require('../Models/team');
+const Player = require('../Models/player');
 const bcrypt = require('bcryptjs');
 
 exports.signup = (req, res) => {
@@ -85,16 +86,6 @@ exports.getTeam = async (req, res) => {
     } catch (error) {
         res.status(404)
     }
-
-
-
-    // .then((data) => {
-    //     //console.log('data: ', data)
-    //     res.json(data)
-    // })
-    // .catch((error) => {
-    //     console.log(`error found: ${error}`)
-    // })
 }
 
 exports.updateTeam = async (req, res) => {
@@ -143,4 +134,38 @@ exports.deleteAll = async(req, res) => {
                 description: err
             })
         })
+}
+
+exports.getPlayersTaken = async(req, res) => {
+    var teamEmail = req.params.email;
+    try {
+        var team = await Team.find({email: teamEmail});
+        // console.log(team);
+        if(team.length !== 1){
+            res.status(400).send({
+                message:
+                    "No team found with this email Id"
+            })
+        }
+
+        var playersEmailList = team[0].playersTaken;
+        var players = []
+
+        for (var eachPlayerEmail of playersEmailList) {
+            const player = await Player.find({email: eachPlayerEmail});
+
+            if(player.length === 1) {
+                players.push(player[0].name);
+            }
+            else{
+                players.push("-" + playersEmail[i]);
+            }
+        }
+        res.status(200).json(players);
+    } catch (err) {
+        return res.status(500).send({
+            message: 'Some error occurred.',
+            description: err
+        });
+    }
 }

@@ -27,7 +27,7 @@ class Auction extends Component {
     }
     dec = () => {
         if (this.state.count <= 0) {
-            this.setState({ count: this.state.count = 0 })
+            this.setState({ count:  0 })
         }
         else if (this.state.count < 1000) {
             this.setState({ count: this.state.count - 100 });
@@ -41,7 +41,7 @@ class Auction extends Component {
     }
     reset(team) {
         if (this.state.btn === 1) {
-            this.setState({ btn: this.state.btn = 0 });
+            this.setState({ btn: 0 });
         }
         else {
             console.log(team);
@@ -56,20 +56,20 @@ class Auction extends Component {
                 .catch(() => {
                     console.log("Unable to fetch sold team");
                 });
-            const t = {
-                "teamName" : team,
-                "purseRemaining" : "purseRemaining" - bidAmt
-            }
-            {/*axios.put('http://localhost:8080/teams/'+ team, t)
-                .then((t)=>{
-                    console.log(t);
-                })
-                .catch((error) =>{
-                    console.log(error);
-                })
-            */}
-            this.setState({ btn: this.state.btn = 1 });
-            this.setState({ count: this.state.count = 0 });
+            // const t = {
+            //     "teamName" : team,
+            //     "purseRemaining" : "purseRemaining" - bidAmt
+            // }
+            // {/*axios.put('http://localhost:8080/teams/'+ team, t)
+            //     .then((t)=>{
+            //         console.log(t);
+            //     })
+            //     .catch((error) =>{
+            //         console.log(error);
+            //     })
+            // */}
+            this.setState({ btn: 1 });
+            this.setState({ count: 0 });
         }
     }
 

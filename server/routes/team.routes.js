@@ -7,5 +7,6 @@ router.get('/allTeams', Team.getAllTeams);
 router.get('/:email', Team.getTeam);
 router.put('/update/:email', Team.updateTeam);
 router.delete('/deleteAll', Team.deleteAll);
+router.get('/:email/players', Team.getPlayersTaken);
 
 module.exports = router;
