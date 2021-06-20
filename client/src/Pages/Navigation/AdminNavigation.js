@@ -10,9 +10,9 @@ class AdminNavigation extends Component {
                 <div className='container'>
                     <div className='navbar-container'>
                         <Link className='navbar-brand' to="/Auction">Auction</Link>
+                        <Link className='navbar-brand' to="/Players">Players</Link>
                         <Link className='navbar-brand' to="/Leaderboard">Leaderboard</Link>
-                        {/* <Link className='navbar-brand' to="/Profile">Profile</Link>
-                        <Link className='navbar-brand' to="/Players">Players</Link> */}
+                        {/*<Link className='navbar-brand' to="/Profile">Profile</Link>*/}
                     </div>
                 </div>
             </div>

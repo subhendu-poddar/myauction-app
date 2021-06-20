@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import Profile from '../Dashboard/Profile'
 import Players from "../Dashboard/Players"
-import Navigation from "./Navigation/TeamNavigation"
+import Navigation from "./Navigation/PlayerNavigation"
 import Leaderboard from "../Dashboard/Leaderboard"
 import Auction from "../Dashboard/Auction"
+import PlayerProfile from '../Dashboard/PlayerProfile'
 
 class TeamPage extends Component {
 
@@ -36,8 +36,8 @@ class TeamPage extends Component {
 
             <Switch>
               // <Route path='/Auction'> <Auction/> </Route>
-              // <Route path='/Leaderboard'> <Leaderboard/> </Route>
-              <Route path='/Profile'> <Profile/> </Route>
+              <Route path='/Leaderboard'> <Leaderboard/> </Route>
+              <Route path='/PlayerProfile'> <PlayerProfile/> </Route>
               <Route path='/Players'> <Players/> </Route>
               <Route path="/"> {null} </Route>
 

@@ -9,6 +9,8 @@ import Protected from './component/Protected'
 import Admin from './component/Admin'
 import AdminPage from './Pages/AdminPage'
 import TeamPage from './Pages/TeamPage'
+import PlayerPage from './Pages/PlayerPage'
+import PlayerLogin from './component/PlayerLogin'
 
 function App() {
 
@@ -25,8 +27,10 @@ function App() {
           <Route exact path='/login'> <Login /> </Route>
           <Route exact path='/AdminPage'> <AdminPage /> </Route>
           <Route exact path='/players-registration'> <PlayersRegistration/> </Route>
+          <Route exact path='/PlayerLogin'> <PlayerLogin/> </Route>
           <Route exact path='/admin/signin'> <Admin/> </Route>
           <Route exact path='/TeamPage'> <TeamPage/> </Route>
+          <Route exact path='/PlayerPage'> <PlayerPage/> </Route>
           <Route exact path='/'> <Home/> </Route>
           
         </Switch>

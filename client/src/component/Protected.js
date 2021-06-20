@@ -11,7 +11,7 @@ class Protected extends Component {
             <div>
                 {AdminLoggedin && <Redirect to="/AdminPage" />}
                 {TeamLoggedin && <Redirect to="/TeamPage" />}
-
+                {PlayerLoggedin && <Redirect to="/PlayerPage" />}
             </div>
         );
     }

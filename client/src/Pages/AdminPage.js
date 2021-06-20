@@ -38,8 +38,8 @@ class AdminPage extends Component {
             <Switch>
               <Route path='/Auction'> <ChoosePlayer/> </Route>
               <Route path='/Leaderboard'> <Leaderboard/> </Route>
-              {/* <Route path='/Profile'> <Profile /> </Route>
-              <Route path='/Players'> <Players /> </Route> */}
+              // <Route path='/Profile'> <Profile /> </Route>
+              // <Route path='/Players'> <Players /> </Route>
               <Route path="/"> {null} </Route>
 
             </Switch>

@@ -66,6 +66,7 @@ class player extends Component {
                 </div>
 
                 {this.displayPlayers(this.state.players)}
+                <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
             </div>
         );
     }

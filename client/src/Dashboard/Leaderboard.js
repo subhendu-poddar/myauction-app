@@ -67,6 +67,7 @@ class Leaderboard extends Component {
 
                 {/* <br/> */}
                 {this.displayTeams(this.state.teams)}
+                <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
             </div>
         );
     }
