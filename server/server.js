@@ -9,9 +9,9 @@ const morgan = require('morgan')
 
 dotenv.config()
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 8080
 
-mongoose.connect(process.env.DATABASE_ACCESS , {
+mongoose.connect(process.env.MONGODB_URI , {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
