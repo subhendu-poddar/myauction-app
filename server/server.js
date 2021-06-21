@@ -11,7 +11,7 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect(MONGODB_URI || 'mongodb://localhost/auction', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/auction', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
