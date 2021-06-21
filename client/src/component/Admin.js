@@ -15,8 +15,9 @@ class Admin extends Component {
   login = (evt) => {
     evt.preventDefault()
     const user = this.state
+    const URL = 'http://localhost:8080';
 
-    axios.post('http://localhost:8080/admin/signin', user)
+    axios.post('/admin/signin', user)
       .then((response) => {
         //console.log(response)
         if (!response.data.success) {

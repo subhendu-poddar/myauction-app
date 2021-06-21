@@ -17,7 +17,9 @@ class Profile extends Component {
         let user = localStorage.getItem('player')
         user = JSON.parse(user)
         //console.log(user.email); 
-        axios.get('http://localhost:8080/player/'+ user.email)
+        const URL = 'http://localhost:8080';
+
+        axios.get('/player/'+ user.email)
         .then((response) =>{
             const data = response.data;
             this.setState({player : data});
@@ -42,7 +44,7 @@ class Profile extends Component {
                         Name - <strong> {each.name} </strong> <br />
                         Email - <strong> {each.email} </strong> <br />
                         Base Bid Amount - <strong> {each.baseBidAmount} </strong> <br />
-                        SoldTo - <strong> {each.soldTo==="None"?"(*----*)":each.soldTo} </strong> <br />
+                        SoldTo - <strong> {each.soldTo==="None"?"(*--Not Sold--*)":each.soldTo} </strong> <br />
                         Bid Amount - <strong> { (each.bidAmount===0?"(*----*)":each.bidAmount) } </strong> <br />
                     </div>
                     

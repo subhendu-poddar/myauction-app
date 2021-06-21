@@ -27,8 +27,10 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "predeploy": "npm run build && npm run server",
-    "deploy": "gh-pages -d build",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "cd server && npm run start",
     "server": "cd server && npm run start",
     "client": "cd client && npm run start",
     "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "

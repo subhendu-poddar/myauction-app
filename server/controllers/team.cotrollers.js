@@ -68,14 +68,44 @@ exports.signin = async (req, res) => {
     }
 }
 
-exports.getAllTeams = (req, res) => {
-    Team.find({})
-        .then((data) => {
-            res.json(data)
-        })
-        .catch((error) => {
-            console.log(`error found: ${error}`)
-        })
+exports.getAllTeams = async (req, res) => {
+
+    try {
+        var data = await Team.find({});
+        if (data.length > 0) {
+
+            for (const index in data) {
+                var players = []
+                var emailList = data[index].playersTaken;
+
+                for(var eachEmail of emailList) {
+                    const player = await Player.findOne({ email: eachEmail });
+
+                    if (player) {
+                        players.push(player.name);
+                    }
+                    else {
+                        players.push("-" + playersEmail[i]);
+                    }
+                }
+                data[index].playersTaken = players;
+            }
+            res.status(200).json(data);
+
+        } else {
+            res.status(400).send({
+                success: false,
+                message: 
+                    "Either team doesn't exist or some players doesn't exist."
+            })
+        }
+    
+    } catch (err) {
+        return res.status(500).send({
+            message: 'Some error occurred.',
+            description: err
+        });
+    }
 }
 
 exports.getTeam = async (req, res) => {

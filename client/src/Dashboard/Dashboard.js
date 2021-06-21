@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import Profile from './Profile'
+import TeamProfile from './TeamProfile'
 import Players from "./Players"
 import Navigation from "../Pages/Navigation/TeamNavigation"
 import Leaderboard from "./Leaderboard"
-import Auction from "./Auction"
 
 class Dashboard extends Component {
 
@@ -35,14 +34,11 @@ class Dashboard extends Component {
                         <Navigation/>
                         
                         <Switch>
-                        <Route path='/Auction'>
-                                <Auction />
-                            </Route>
                             <Route path='/Leaderboard'>
                                 <Leaderboard />
                             </Route>
-                            <Route path='/Profile'>
-                                <Profile/>
+                            <Route path='/TeamProfile'>
+                                <TeamProfile/>
                             </Route>
                             <Route path='/Players'>
                                 <Players/>

@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Players from "../Dashboard/Players"
 import Navigation from "./Navigation/PlayerNavigation"
 import Leaderboard from "../Dashboard/Leaderboard"
-import Auction from "../Dashboard/Auction"
 import PlayerProfile from '../Dashboard/PlayerProfile'
 
 class TeamPage extends Component {
@@ -35,7 +34,7 @@ class TeamPage extends Component {
             <Navigation />
 
             <Switch>
-              // <Route path='/Auction'> <Auction/> </Route>
+              {/* <Route path='/Auction'> <Auction/> </Route> */}
               <Route path='/Leaderboard'> <Leaderboard/> </Route>
               <Route path='/PlayerProfile'> <PlayerProfile/> </Route>
               <Route path='/Players'> <Players/> </Route>

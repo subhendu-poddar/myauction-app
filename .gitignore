@@ -1,3 +1,6 @@
 
 # No modules
 node_modules
+
+# .env file
+.env

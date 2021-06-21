@@ -21,8 +21,9 @@ class Login extends Component {
     login = (evt) => {
         evt.preventDefault()
         const user = this.state
+        const URL = 'http://localhost:8080';
 
-        axios.post('http://localhost:8080/player/signin', user)
+        axios.post('/player/signin', user)
             .then((response) => {
                 //console.log(response)
                 if (!response.data.success) {

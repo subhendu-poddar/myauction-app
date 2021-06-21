@@ -5,7 +5,8 @@ class Leaderboard extends Component {
 
     state = {
         teamName: '',
-        teams: []
+        teams: [],
+        players: []
     }
 
     componentDidMount = () => {
@@ -13,7 +14,9 @@ class Leaderboard extends Component {
     }
 
     getTeams = () => {
-        axios.get('http://localhost:8080/team/allTeams')
+        const URL = 'http://localhost:8080';
+        
+        axios.get('/team/allTeams')
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
@@ -23,15 +26,18 @@ class Leaderboard extends Component {
                 console.log("Teams Not Recieved");
             });
     }
+
     showplayers = (players) => {
+
         return players.map((player,index1) => (
             <div key={index1}>
-                {player}
+                <strong> {player} </strong> <br/> <br/>
             </div>
         ))
     }
 
-    displayTeams = (teams) => {
+    displayTeams = () => {
+        var teams = this.state.teams;
         if (!teams.length) return null;
 
         return teams.map((team, index) => (
@@ -66,7 +72,7 @@ class Leaderboard extends Component {
                 </div>
 
                 {/* <br/> */}
-                {this.displayTeams(this.state.teams)}
+                {this.displayTeams()}
                 <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
             </div>
         );

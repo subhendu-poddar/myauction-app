@@ -30,8 +30,9 @@ class Register extends Component {
         evt.preventDefault()
         const registered = this.state
         delete registered.c_password
+        const URL = 'http://localhost:8080';
 
-        axios.post('http://localhost:8080/team/signup', registered)
+        axios.post('/team/signup', registered)
             .then((response) =>{
                 console.log(response)
                 if(!response.data.success){
