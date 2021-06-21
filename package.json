@@ -31,8 +31,8 @@
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "cd server && npm run start",
-    "server": "cd server && npm run start",
-    "client": "cd client && npm run start",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
     "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "
   },
   "eslintConfig": {
