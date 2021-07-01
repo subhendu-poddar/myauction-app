@@ -17,9 +17,8 @@ class Profile extends Component {
         let user = localStorage.getItem('player')
         user = JSON.parse(user)
         //console.log(user.email); 
-        const URL = 'http://localhost:8080';
 
-        axios.get('/player/'+ user.email)
+        axios.get(`${process.env.REACT_APP_API_URL}/player/`+ user.email)
         .then((response) =>{
             const data = response.data;
             this.setState({player : data});

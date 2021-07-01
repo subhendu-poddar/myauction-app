@@ -71,25 +71,26 @@ exports.signin = async (req, res) => {
 exports.getAllTeams = async (req, res) => {
 
     try {
-        var data = await Team.find({});
+        const data = await Team.find({});
+
         if (data.length > 0) {
 
-            for (const index in data) {
-                var players = []
-                var emailList = data[index].playersTaken;
+            // for (const index in data) {
+            //     var players = []
+            //     var emailList = data[index].playersTaken;
 
-                for(var eachEmail of emailList) {
-                    const player = await Player.findOne({ email: eachEmail });
+            //     for(var eachEmail of emailList) {
+            //         const player = await Player.findOne({ email: eachEmail });
 
-                    if (player) {
-                        players.push(player.name);
-                    }
-                    else {
-                        players.push("-" + playersEmail[i]);
-                    }
-                }
-                data[index].playersTaken = players;
-            }
+            //         if (player) {
+            //             players.push(player.name);
+            //         }
+            //         else {
+            //             players.push("-" + playersEmail[i]);
+            //         }
+            //     }
+            //     data[index].playersTaken = players;
+            // }
             res.status(200).json(data);
 
         } else {

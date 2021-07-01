@@ -22,9 +22,8 @@ class Auction extends Component {
     }
 
     getTeams = () => {
-        const URL = 'http://localhost:8080';
 
-        axios.get('/team/allTeams')
+        axios.get(`${process.env.REACT_APP_API_URL}/team/allTeams`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
@@ -98,14 +97,13 @@ class Auction extends Component {
         player.soldTo = team.teamName;
         player.bidAmount = this.state.bidAmount;
         team.purseRemaining = team.purseRemaining - this.state.bidAmount;
-        //console.log("line 89",team.playersTaken.includes(player.name),team.playersTaken)
-        const url = "http://localhost:8080"
-        if (!team.playersTaken.includes(player.email)) {
-            team.playersTaken.push(player.email)
+        
+        if (!team.playersTaken.includes(player.name)) {
+            team.playersTaken.push(player.name)
             // console.log(player)
             //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
-            // const url = "http://localhost:8080"
-            axios.put('/player/update/' + player.email, player)
+
+            axios.put(`${process.env.REACT_APP_API_URL}/player/update/${player.email}`, player)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -118,7 +116,7 @@ class Auction extends Component {
                 .catch((error) => {
                     console.log("Internal Server Error !!")
                 })
-            axios.put('/team/update/' + team.email, team)
+            axios.put(`${process.env.REACT_APP_API_URL}/team/update/${team.email}`, team)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -132,7 +130,7 @@ class Auction extends Component {
                     console.log("Internal Server Error !!")
                 })
         }
-        axios.get('/player/' + player.email)
+        axios.get(`${process.env.REACT_APP_API_URL}/player/${player.email}`)
             .then((response) => {
                 const data = response.data;
                 //console.log(data)

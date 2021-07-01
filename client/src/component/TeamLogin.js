@@ -21,9 +21,8 @@ class Login extends Component {
     login = (evt) => {
         evt.preventDefault()
         const user = this.state
-        const URL = 'http://localhost:8080';
 
-        axios.post('/team/signin', user)
+        axios.post(`${process.env.REACT_APP_API_URL}/team/signin`, user)
             .then((response) => {
                 //console.log(response)
                 if (!response.data.success) {

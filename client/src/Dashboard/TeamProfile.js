@@ -17,28 +17,28 @@ class Profile extends Component {
     getProfile = async () => {
         let user = localStorage.getItem('team');
         user = JSON.parse(user);
-        const URL = 'http://localhost:8080';
 
         try {
-            const response = await axios.get(process.env.LOCALSERVER+`/team/${user.email}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/team/${user.email}`);
 
             if(response){
                 const data = response.data;
-                this.setState({ team: data[0] });
+                this.setState({ team: data[0], players: data[0].playersTaken });
+                // console.log(data[0].playersTaken)
 
             } else {
-                console.log("Team Not Recieved");
+                console.log("Team Not Received");
             }
 
-            const anotherResponse = await axios.get(`/team/${this.state.team.email}/players`);
+            // const anotherResponse = await axios.get(`${process.env.REACT_APP_API_URL}/team/${this.state.team.email}/players`);
 
-            if (anotherResponse) {
-                const data = anotherResponse.data;
-                this.setState({ players: data });
+            // if (anotherResponse) {
+            //     const data = anotherResponse.data;
+            //     this.setState({ players: data });
 
-            } else {
-                console.log("Team Players Not Recieved");
-            }
+            // } else {
+            //     console.log("Team Players Not Recieved");
+            // }
 
         
         } catch (err) {

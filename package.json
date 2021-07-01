@@ -36,26 +36,5 @@
     "server": "cd server && npm start",
     "client": "cd client && npm start",
     "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.1.0"
   }
 }

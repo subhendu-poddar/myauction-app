@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import dotenv from 'dotenv';
 import Home from './component/Home'
 import Login from './component/TeamLogin'
 import NavMenu from './component/NavMenu'
@@ -11,6 +12,7 @@ import AdminPage from './Pages/AdminPage'
 import TeamPage from './Pages/TeamPage'
 import PlayerPage from './Pages/PlayerPage'
 import PlayerLogin from './component/PlayerLogin'
+
 
 function App() {
 
