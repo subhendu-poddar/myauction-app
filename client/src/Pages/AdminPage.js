@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { hashRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Players from "../Dashboard/Players"
 import Navigation from "./Navigation/AdminNavigation"
 import Leaderboard from "../Dashboard/Leaderboard"
@@ -30,7 +30,7 @@ class AdminPage extends Component {
         </div>
 
         <div>
-          <hashRouter>
+          <BrowserRouter>
             <Navigation />
 
             <Switch>
@@ -40,7 +40,7 @@ class AdminPage extends Component {
               <Route path="/"> {null} </Route>
 
             </Switch>
-          </hashRouter>
+          </BrowserRouter>
         </div>
 
       </div>
