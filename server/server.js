@@ -9,9 +9,10 @@ const morgan = require('morgan')
 
 dotenv.config()
 const app = express()
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
+const mongoURI = "mongodb+srv://sp:sp1999@cluster0.r77ai.mongodb.net/AUCTION?retryWrites=true&w=majority";
 
-mongoose.connect(process.env.DATABASE_ACCESS || 'mongodb://localhost/auction', {
+mongoose.connect(mongoURI || process.env.DATABASE_ACCESS || 'mongodb://localhost/auction', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
