@@ -11,6 +11,7 @@
     "babel-plugin-polyfill-corejs2": "^0.1.10",
     "babel-plugin-polyfill-corejs3": "^0.1.7",
     "babel-plugin-polyfill-regenerator": "^0.1.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chokidar": "^3.5.1",
     "concurrently": "^6.2.0",
@@ -20,6 +21,7 @@
     "mongoose": "^5.12.11",
     "morgan": "^1.10.0",
     "netlify-cli": "^3.37.37",
+    "nodemon": "^2.0.9",
     "path": "^0.12.7",
     "queue-microtask": "^1.2.2",
     "react": "^17.0.1",
@@ -29,12 +31,12 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
+    "start": "node server.js",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "cd server && npm run start",
-    "server": "cd server && npm start",
-    "client": "cd client && npm start",
+    "server": "nodemon server",
+    "client": "cd client && npm run start",
     "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "
   }
 }
