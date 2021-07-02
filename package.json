@@ -1,16 +1,18 @@
 {
   "homepage": "https://subhendu-poddar.github.io/auction-app/",
   "name": "auction",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "server": "nodemon server",
+    "client": "cd client && npm run start",
+    "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.6.3",
-    "axios": "^0.21.1",
-    "babel-plugin-polyfill-corejs2": "^0.1.10",
-    "babel-plugin-polyfill-corejs3": "^0.1.7",
-    "babel-plugin-polyfill-regenerator": "^0.1.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chokidar": "^3.5.1",
@@ -29,14 +31,5 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.1.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "server": "nodemon server",
-    "client": "cd client && npm run start",
-    "dev": "concurrently -n 'server,client' -c 'yellow,green' \"npm run server\" \"npm run client\" "
   }
 }
