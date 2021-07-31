@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { HashRouter, Route, Switch, Link } from "react-router-dom";
 import TeamProfile from './TeamProfile'
 import Players from "./Players"
 import Navigation from "../Pages/Navigation/TeamNavigation"
@@ -30,7 +30,7 @@ class Dashboard extends Component {
                 </div>
                 
                 <div>
-                    <BrowserRouter>
+                    <HashRouter>
                         <Navigation/>
                         
                         <Switch>
@@ -48,7 +48,7 @@ class Dashboard extends Component {
                             </Route>
                             
                         </Switch>
-                    </BrowserRouter>
+                    </HashRouter>
                 </div>
                 
             </div>
