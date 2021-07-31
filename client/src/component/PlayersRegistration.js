@@ -28,7 +28,7 @@ class PlayersRegistration extends Component {
         const registered = this.state
         delete registered.c_password
 
-        axios.post(`${process.env.REACT_APP_API_URL}/player/signup`, registered)
+        axios.post(`/player/signup`, registered)
             .then((response) => {
                 console.log(response)
                 if (!response.data.success) {

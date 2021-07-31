@@ -19,7 +19,7 @@ class Profile extends Component {
         user = JSON.parse(user);
 
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/team/${user.email}`);
+            const response = await axios.get(`/team/${user.email}`);
 
             if(response){
                 const data = response.data;

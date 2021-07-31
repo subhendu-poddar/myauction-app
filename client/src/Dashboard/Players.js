@@ -13,7 +13,7 @@ class player extends Component {
 
     getPlayers = () => {
 
-        axios.get(`${process.env.REACT_APP_API_URL}/player/allPlayers`)
+        axios.get(`/player/allPlayers`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });
