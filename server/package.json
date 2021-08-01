@@ -4,8 +4,8 @@
   "description": "server",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server",
-    "start": "nodemon server"
+    "test": "node server.js",
+    "start": "node server.js"
   },
   "author": "Subhendu Poddar",
   "license": "ISC",
