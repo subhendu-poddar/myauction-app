@@ -23,7 +23,7 @@ class Auction extends Component {
 
     getTeams = () => {
 
-        axios.get(`/team/allTeams`)
+        axios.get(`${process.env.REACT_APP_API_URL}/team/allTeams`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
@@ -103,7 +103,7 @@ class Auction extends Component {
             // console.log(player)
             //data1.data.success ? this.teamUpdated() : this.teamNotUpdated()
 
-            axios.put(`/player/update/${player.email}`, player)
+            axios.put(`${process.env.REACT_APP_API_URL}/player/update/${player.email}`, player)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -116,7 +116,7 @@ class Auction extends Component {
                 .catch((error) => {
                     console.log("Internal Server Error !!")
                 })
-            axios.put(`/team/update/${team.email}`, team)
+            axios.put(`${process.env.REACT_APP_API_URL}/team/update/${team.email}`, team)
                 .then((response) => {
                     //console.log(response)
                     if (!response.data.success) {
@@ -130,7 +130,7 @@ class Auction extends Component {
                     console.log("Internal Server Error !!")
                 })
         }
-        axios.get(`/player/${player.email}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/player/${player.email}`)
             .then((response) => {
                 const data = response.data;
                 //console.log(data)

@@ -19,7 +19,7 @@ class ChoosePlayer extends Component {
 
     getPlayers = () => {
 
-        axios.get(`/player/allPlayers`)
+        axios.get(`${process.env.REACT_APP_API_URL}/player/allPlayers`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ players: data });

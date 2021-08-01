@@ -18,7 +18,7 @@ class Profile extends Component {
         user = JSON.parse(user)
         //console.log(user.email); 
 
-        axios.get(`/player/`+ user.email)
+        axios.get(`${process.env.REACT_APP_API_URL}/player/`+ user.email)
         .then((response) =>{
             const data = response.data;
             this.setState({player : data});

@@ -22,7 +22,7 @@ class Login extends Component {
         evt.preventDefault()
         const user = this.state
 
-        axios.post(`/team/signin`, user)
+        axios.post(`${process.env.REACT_APP_API_URL}/team/signin`, user)
             .then((response) => {
                 //console.log(response)
                 if (!response.data.success) {

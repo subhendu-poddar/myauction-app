@@ -15,7 +15,7 @@ class Leaderboard extends Component {
 
     getTeams = () => {
         
-        axios.get(`/team/allTeams`)
+        axios.get(`${process.env.REACT_APP_API_URL}/team/allTeams`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ teams: data });
