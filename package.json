@@ -1,5 +1,4 @@
 {
-  "homepage": "https://subhendu-poddar.github.io/auction-app/",
   "name": "auction",
   "version": "1.0.0",
   "main": "server.js",
